@@ -1,0 +1,10 @@
+{
+  "name": "@kyokusu-ui/vue",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@kyokusu-ui/core": "workspace:*",
+    "vue": "^3.4.0"
+  }
+}
