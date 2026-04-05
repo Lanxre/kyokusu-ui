@@ -1,10 +1,28 @@
 {
   "name": "@kyokusu-ui/vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "./dist/kyokusu-ui-vue.umd.cjs",
+  "module": "./dist/kyokusu-ui-vue.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "vite build"
+  },
   "dependencies": {
-    "@kyokusu-ui/core": "workspace:*",
-    "vue": "^3.4.0"
+    "@kyokusu-ui/core": "^0.0.1",
+    "vue": "^3.5.32"
+  },
+  "devDependencies": {
+    "vite": "^8.0.3",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/kyokusu-ui-vue.js",
+      "require": "./dist/kyokusu-ui-vue.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
   }
 }

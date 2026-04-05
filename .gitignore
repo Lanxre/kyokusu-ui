@@ -1,10 +1,18 @@
 # dependencies (bun install)
-node_modules
+node_modules/
+.pnpm-store/
 
 # output
 out
 dist
 *.tgz
+
+dist/
+.turbo/
+.output/
+.nuxt/
+.next/
+build/
 
 # code coverage
 coverage
@@ -27,8 +35,13 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .cache
 *.tsbuildinfo
 
-# IntelliJ based IDEs
-.idea
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lockb
 
 # Finder (MacOS) folder config
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
