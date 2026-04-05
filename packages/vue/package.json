@@ -10,7 +10,7 @@
     "dev": "vite build --watch"
   },
   "dependencies": {
-    "@kyokusu-ui/core": "^0.0.1",
+    "@kyokusu-ui/core": "^0.0.3",
     "vue": "^3.5.32"
   },
   "devDependencies": {

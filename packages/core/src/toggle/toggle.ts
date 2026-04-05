@@ -1,3 +1,5 @@
+import './toggle.css'
+
 export interface ToggleOptions {
     checked?: boolean;
     disabled?: boolean;
@@ -40,6 +42,14 @@ export class Toggle {
         this.rootEl = document.createElement('div');
         this.rootEl.className = 'k-toggle-container';
 
+        if (this.options.label) {
+            this.labelEl = document.createElement('label');
+            this.labelEl.className = 'k-toggle-label';
+            this.labelEl.htmlFor = this.id;
+            this.labelEl.textContent = this.options.label;
+            this.rootEl.appendChild(this.labelEl);
+        }
+
         this.buttonEl = document.createElement('button');
         this.buttonEl.type = 'button';
         this.buttonEl.role = 'switch';
@@ -57,14 +67,6 @@ export class Toggle {
         this.buttonEl.appendChild(srSpan);
         this.buttonEl.appendChild(thumbSpan);
         this.rootEl.appendChild(this.buttonEl);
-
-        if (this.options.label) {
-            this.labelEl = document.createElement('label');
-            this.labelEl.className = 'k-toggle-label';
-            this.labelEl.htmlFor = this.id;
-            this.labelEl.textContent = this.options.label;
-            this.rootEl.appendChild(this.labelEl);
-        }
 
         this.updateDOM();
 
