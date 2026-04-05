@@ -1,6 +1,6 @@
 {
   "name": "@kyokusu-ui/vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/kyokusu-ui-vue.umd.cjs",
   "module": "./dist/kyokusu-ui-vue.js",
