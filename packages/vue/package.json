@@ -6,15 +6,17 @@
   "module": "./dist/kyokusu-ui-vue.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite build --watch"
   },
   "dependencies": {
     "@kyokusu-ui/core": "^0.0.1",
     "vue": "^3.5.32"
   },
   "devDependencies": {
-    "vite": "^8.0.3",
     "@vitejs/plugin-vue": "^6.0.5",
+    "vite": "^8.0.3",
+    "vite-plugin-css-injected-by-js": "^4.0.1",
     "vite-plugin-dts": "^4.5.4"
   },
   "files": ["dist"],

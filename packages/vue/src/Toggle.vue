@@ -1,41 +1,150 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import { ToggleMachine } from '@kyokusu-ui/core';
+<script lang="ts" setup>
+import { useId } from 'vue';
 
 const props = defineProps<{
-  initial?: boolean
+  label?: string;
+  id?: string;
+  disabled?: boolean;
 }>();
 
-const machine = new ToggleMachine(props.initial ?? false);
-const isActive = ref(machine.state);
+const model = defineModel<boolean>({ default: false });
 
-const onToggle = () => {
-  isActive.value = machine.toggle();
+const toggleId = props.id || useId();
+
+const toggle = () => {
+  if (!props.disabled) {
+    model.value = !model.value;
+  }
 };
 </script>
 
 <template>
-  <button 
-    class="kyokusu-toggle"
-    :data-active="isActive"
-    @click="onToggle"
-  >
-    <slot :active="isActive">
-      {{ isActive ? 'ВКЛ' : 'ВЫКЛ' }}
-    </slot>
-  </button>
+  <div class="k-toggle-container">
+    <label 
+      v-if="label" 
+      :for="toggleId" 
+      class="k-toggle-label"
+      :class="{ 'k-toggle-label--disabled': disabled }"
+      @click.prevent="toggle" 
+    >
+      {{ label }}
+    </label>    
+    <button 
+      :id="toggleId"
+      type="button"
+      role="switch"
+      :aria-checked="model"
+      :disabled="disabled"
+      @click="toggle"
+      class="k-toggle-switch"
+      :class="{ 'k-toggle--active': model }"
+    >
+      <span class="sr-only">{{ label }}</span>
+      <span 
+        aria-hidden="true" 
+        class="k-toggle-thumb"
+      ></span>
+    </button>
+  </div>
 </template>
 
 <style scoped>
-.kyokusu-toggle {
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  transition: all 0.2s;
+.dark .k-toggle-container {
+  --k-toggle-bg-off: #e4e4e7;
+  --k-toggle-bg-on: #ffffff;
+  --k-toggle-thumb-off: #71717a;
+  --k-toggle-thumb-on: #18181b;
+  --k-toggle-ring: #ffffff;
+  --k-toggle-label-color: #f4f4f5;
 }
-.kyokusu-toggle[data-active="true"] {
-  background: #42b883;
-  color: white;
+
+.k-toggle-container {
+  --k-toggle-width: 48px;
+  --k-toggle-height: 24px;
+  --k-toggle-thumb-size: 20px;
+
+  --k-toggle-bg-off: #3f3f46;
+  --k-toggle-bg-on: #18181b;
+  --k-toggle-thumb-off: #a1a1aa;
+  --k-toggle-thumb-on: #ffffff;
+  --k-toggle-ring: #18181b;
+  --k-toggle-label-color: #18181b;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.k-toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: var(--k-toggle-height);
+  width: var(--k-toggle-width);
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-color: var(--k-toggle-bg-off);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.k-toggle-switch:focus-visible {
+  box-shadow: 0 0 0 2px transparent, 0 0 0 4px var(--k-toggle-ring);
+}
+
+.k-toggle--active {
+  background-color: var(--k-toggle-bg-on);
+}
+
+.k-toggle-switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.k-toggle-thumb {
+  pointer-events: none;
+  position: absolute;
+  left: 1px;
+  height: var(--k-toggle-thumb-size);
+  width: var(--k-toggle-thumb-size);
+  border-radius: 50%;
+  background-color: var(--k-toggle-thumb-off);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.k-toggle--active .k-toggle-thumb {
+  transform: translateX(24px); 
+  background-color: var(--k-toggle-thumb-on);
+}
+
+.k-toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--k-toggle-label-color);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.k-toggle-label--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>
