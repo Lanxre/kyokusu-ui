@@ -1,20 +1,24 @@
 {
   "name": "@kyokusu-ui/core",
   "version": "0.0.2",
-  "type": "module",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
     "test": "bun test"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2"
   }
 }
