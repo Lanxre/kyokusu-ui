@@ -9,6 +9,8 @@
   --text-accent: white;
   --text-logo: #27272a;
   
+  --bg-hover-secondary:  lightgray;
+  
   --accent-bg: #6B6A6C;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
@@ -32,6 +34,8 @@ body, html {
   --text-muted: #a1a1aa;
   --text-accent: #ffffff;
   --text-logo: #ffffff;
+  
+  --bg-hover-secondary:  #2f2f2f;
   
   --accent-bg: #6B6A6C;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
@@ -119,8 +123,7 @@ body, html {
 }
 
 .preview-area {
-  padding: 40px;
-  max-width: 800px;
+  padding: 100px;
 }
 
 .card {
@@ -130,6 +133,27 @@ body, html {
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: var(--card-shadow);
+
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto 24px auto;
+
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
 }
 
 .card h3 {
