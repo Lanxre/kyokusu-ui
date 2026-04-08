@@ -1,0 +1,198 @@
+.k-select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+
+  --k-select-bg: #ffffff;
+  --k-select-bg-hover: #fafafa;
+  --k-select-bg-disabled: #f4f4f5;
+  --k-select-border: #e4e4e7;
+  --k-select-border-hover: #d4d4d8;
+  --k-select-text: #18181b;
+  --k-select-text-disabled: #a1a1aa;
+  --k-select-placeholder: #a1a1aa;
+  --k-select-label: #18181b;
+  
+  --k-select-dropdown-bg: #ffffff;
+  --k-select-dropdown-border: #e4e4e7;
+  --k-select-option-hover: #f4f4f5;
+  --k-select-option-selected: #18181b;
+  --k-select-option-selected-text: #ffffff;
+
+  --k-select-radius: 8px;
+  --k-select-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --k-select-dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .k-select-container {
+  --k-select-bg: #18181b;
+  --k-select-bg-hover: #27272a;
+  --k-select-bg-disabled: #27272a;
+  --k-select-border: #3f3f46;
+  --k-select-border-hover: #52525b;
+  --k-select-text: #f4f4f5;
+  --k-select-text-disabled: #52525b;
+  --k-select-placeholder: #71717a;
+  --k-select-label: #ffffff;
+  
+  --k-select-dropdown-bg: #18181b;
+  --k-select-dropdown-border: #3f3f46;
+  --k-select-option-hover: #27272a;
+  --k-select-option-selected: #ffffff;
+  --k-select-option-selected-text: #18181b;
+  
+  --k-select-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --k-select-dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+}
+
+.k-select-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--k-select-label);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin-left: 3px;
+}
+
+.k-select-label--disabled {
+  color: var(--k-select-text-disabled);
+  cursor: not-allowed;
+}
+
+.k-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.k-select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--k-select-bg);
+  border: 1px solid var(--k-select-border);
+  border-radius: var(--k-select-radius);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--k-select-text);
+  box-shadow: var(--k-select-shadow);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.k-select-trigger:hover:not(:disabled) {
+  background-color: var(--k-select-bg-hover);
+  border-color: var(--k-select-border-hover);
+}
+
+.k-select-trigger:disabled {
+  background-color: var(--k-select-bg-disabled);
+  color: var(--k-select-text-disabled);
+  border-color: transparent;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.k-select-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.k-select-value--placeholder {
+  color: var(--k-select-placeholder);
+}
+
+.k-select-icon {
+  display: flex;
+  align-items: center;
+  color: var(--k-select-placeholder);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.k-select-icon--open {
+  transform: rotate(180deg);
+  color: var(--k-select-text);
+}
+
+.k-select-trigger:focus .k-select-icon {
+  color: var(--k-select-text);
+}
+
+.k-select-trigger:disabled .k-select-icon {
+  color: var(--k-select-text-disabled);
+}
+
+.k-select-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.k-select-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--k-select-dropdown-bg);
+  border: 1px solid var(--k-select-dropdown-border);
+  border-radius: var(--k-select-radius);
+  box-shadow: var(--k-select-dropdown-shadow);
+  padding: 4px;
+  margin: 0;
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.k-select-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.k-select-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+.k-select-dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--k-select-border);
+  border-radius: 10px;
+}
+
+.k-select-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--k-select-text);
+  border-radius: calc(var(--k-select-radius) - 2px);
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.k-select-option:hover {
+  background-color: var(--k-select-option-hover);
+}
+
+.k-select-option--selected {
+  background-color: var(--k-select-option-selected);
+  color: var(--k-select-option-selected-text);
+  font-weight: 500;
+}
+
+.k-select-option--selected:hover {
+  background-color: var(--k-select-option-selected);
+}
+
+.k-select-fade-enter-active,
+.k-select-fade-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.k-select-fade-enter-from,
+.k-select-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}

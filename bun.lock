@@ -28,7 +28,7 @@
     },
     "packages/core": {
       "name": "@kyokusu-ui/core",
-      "version": "0.0.2",
+      "version": "0.0.4",
       "devDependencies": {
         "tsup": "^8.5.1",
         "typescript": "^6.0.2",
@@ -36,9 +36,10 @@
     },
     "packages/vue": {
       "name": "@kyokusu-ui/vue",
-      "version": "0.0.2",
+      "version": "0.0.4",
       "dependencies": {
-        "@kyokusu-ui/core": "^0.0.1",
+        "@kyokusu-ui/core": "^0.0.4",
+        "@phosphor-icons/vue": "^2.2.1",
         "vue": "^3.5.32",
       },
       "devDependencies": {
@@ -517,8 +518,6 @@
     "vue-tsc": ["vue-tsc@3.2.6", "", { "dependencies": { "@volar/typescript": "2.4.28", "@vue/language-core": "3.2.6" }, "peerDependencies": { "typescript": ">=5.0.0" }, "bin": { "vue-tsc": "bin/vue-tsc.js" } }, "sha512-gYW/kWI0XrwGzd0PKc7tVB/qpdeAkIZLNZb10/InizkQjHjnT8weZ/vBarZoj4kHKbUTZT/bAVgoOr8x4NsQ/Q=="],
 
     "yallist": ["yallist@4.0.0", "", {}, "sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A=="],
-
-    "@kyokusu-ui/vue/@kyokusu-ui/core": ["@kyokusu-ui/core@0.0.1", "", {}, "sha512-M24hlhIlwH2AKD0WEBQkMKtcCIDpLazveY51keebIQY9Q4K5fPgedSS+XHkfFqWOwEQh7LRb4RrwXj0IWmb/tg=="],
 
     "@microsoft/api-extractor/source-map": ["source-map@0.6.1", "", {}, "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="],
 
