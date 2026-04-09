@@ -1,49 +1,12 @@
 <script setup lang="ts">
-import { 
-  PhMoon, 
-  PhSun, 
-  PhToggleLeft, 
-  PhCursorClick, 
-  PhTextT, 
-  PhListDashes,
-  PhTextAa,
-  PhTimer,
-  PhSelectionAll,
-  PhLineSegment
-} from '@phosphor-icons/vue'
+import { storeToRefs } from 'pinia'
+import { PhMoon, PhSun } from '@phosphor-icons/vue'
+import { useAppStore } from '../../stores/app'
+import { navigationGroups } from '../../config/navigation'
 
-const current = defineModel<string>('current', { required: true })
-const theme = defineModel<boolean>('theme', { required: true })
-
-const groups = [
-  {
-    label: 'Form',
-    items: [
-      { id: 'Input', label: 'Input', icon: PhTextT },
-      { id: 'Select', label: 'Select', icon: PhListDashes },
-      { id: 'MultiSelect', label: 'MultiSelect', icon: PhSelectionAll, disabled: true },
-      { id: 'SearchSelect', label: 'SearchSelect', icon: PhCursorClick, disabled: true },
-      { id: 'DatePicker', label: 'DatePicker', icon: PhTimer }
-    ]
-  },
-  {
-    label: 'Content',
-    items: [
-      { id: 'RichText', label: 'Rich Text', icon: PhTextAa },
-      { id: 'Label', label: 'Label', icon: PhCursorClick, disabled: true },
-      { id: 'Separator', label: 'Separator', icon: PhLineSegment }
-    ]
-  },
-  {
-    label: 'Controls',
-    items: [
-      { id: 'Toggle', label: 'Toggle', icon: PhToggleLeft },
-      { id: 'Button', label: 'Button', icon: PhCursorClick, disabled: true },
-      { id: 'ToolTip', label: 'ToolTip', icon: PhCursorClick, disabled: true },
-      { id: 'Notification', label: 'Notification', icon: PhCursorClick, disabled: true }
-    ]
-  }
-]
+const appStore = useAppStore()
+const { currentComponent, isDark } = storeToRefs(appStore)
+const { toggleTheme, setCurrentComponent } = appStore
 </script>
 
 <template>
@@ -52,15 +15,15 @@ const groups = [
       <span class="logo">Kyokusu UI</span>
 
       <div class="theme-switcher">
-        <span class="theme-label" @click="theme = !theme">
-          <component :is="theme ? PhMoon : PhSun" :size="16" weight="bold" />
+        <span class="theme-label" @click="toggleTheme">
+          <component :is="isDark ? PhMoon : PhSun" :size="16" weight="bold" />
           Theme
         </span>
       </div>
     </div>
 
     <nav class="menu">
-      <div v-for="group in groups" :key="group.label" class="menu-group">
+      <div v-for="group in navigationGroups" :key="group.label" class="menu-group">
         <div class="menu-group-label">
           {{ group.label }}
         </div>
@@ -68,10 +31,10 @@ const groups = [
         <button
           v-for="item in group.items"
           :key="item.id"
-          :class="{ active: current === item.id }"
+          :class="{ active: currentComponent === item.id }"
           :disabled="item.disabled"
           :title="item.disabled ? 'Soon...' : ''"
-          @click="current = item.id"
+          @click="setCurrentComponent(item.id)"
         >
           <component :is="item.icon" :size="20" weight="duotone" />
           {{ item.label }}

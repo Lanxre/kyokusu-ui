@@ -1,4 +1,4 @@
-import './rich-text.css';
+import '../styles/rich-text.css';
 
 export interface EditorOptions {
     value?: string;

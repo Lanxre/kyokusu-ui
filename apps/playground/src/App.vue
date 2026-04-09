@@ -1,28 +1,23 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import Sidebar from './components/Sidebar.vue'
-import ToggleDemo from './components/demos/ToggleDemo.vue'
-import SelectDemo from './components/demos/SelectDemo.vue'
-import RichTextDemo from './components/demos/RichTextDemo.vue'
-import InputDemo from './components/demos/InputDemo.vue'
-import DatePickerDemo from './components/demos/DatePickerDemo.vue'
-import SeparatorDemo from './components/demos/SeparatorDemo.vue'
+import { storeToRefs } from 'pinia'
+import { NotificationContainer, useNotificationProvider } from '@kyokusu-ui/vue'
+import { useAppStore } from './stores/app'
+import { useTheme } from './composables/useTheme'
+import Sidebar from './components/layout/Sidebar.vue'
+import { componentDemos } from './config/demos'
 
-const currentComponent = ref('Toggle')
-const isDark = ref(true)
+const { initTheme } = useTheme()
+initTheme()
 
-watch(isDark, (val) => {
-  if (val) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-}, { immediate: true }) 
+const appStore = useAppStore()
+const { currentComponent } = storeToRefs(appStore)
+
+const { notifications, remove } = useNotificationProvider()
 </script>
 
 <template>
   <div class="playground-layout">
-    <Sidebar v-model:current="currentComponent" v-model:theme="isDark" />
+    <Sidebar />
 
     <main class="content">
       <header class="content-header">
@@ -30,17 +25,17 @@ watch(isDark, (val) => {
       </header>
 
       <section class="preview-area">
-        <ToggleDemo v-if="currentComponent === 'Toggle'" />
-        <SelectDemo v-else-if="currentComponent === 'Select'" />
-        <RichTextDemo v-else-if="currentComponent === 'RichText'" />
-        <InputDemo v-else-if="currentComponent === 'Input'" />
-        <DatePickerDemo v-else-if="currentComponent === 'DatePicker'" />
-        <SeparatorDemo v-else-if="currentComponent === 'Separator'" />
+        <component 
+          v-if="componentDemos[currentComponent]" 
+          :is="componentDemos[currentComponent]" 
+        />
         
         <div v-else class="empty-state">
           Выберите компонент из меню слева
         </div>
       </section>
     </main>
+
+    <NotificationContainer :notifications="notifications" @remove="remove" position="top-right" />
   </div>
 </template>

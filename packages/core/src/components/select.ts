@@ -1,4 +1,4 @@
-import './select.css';
+import '../styles/select.css';
 
 export interface SelectOption {
     value: string;

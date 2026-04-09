@@ -1,4 +1,4 @@
-import './toggle.css'
+import '../styles/toggle.css'
 
 export interface ToggleOptions {
     checked?: boolean;

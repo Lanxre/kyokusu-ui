@@ -1,4 +1,4 @@
-import './input.css';
+import '../styles/input.css';
 
 export interface InputOptions {
     value?: string;

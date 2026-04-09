@@ -1,0 +1,75 @@
+.k-separator {
+    display: flex;
+    align-items: center;
+    border: 0;
+    margin: 0;
+    
+    --k-sep-color: #e4e4e7;
+    --k-sep-label-color: #71717a;
+    --k-sep-label-bg: #ffffff;
+    --k-sep-spacing: 16px;
+}
+
+.dark .k-separator {
+    --k-sep-color: #3f3f46;
+    --k-sep-label-color: #a1a1aa;
+    --k-sep-label-bg: #18181b;
+}
+
+.k-separator--horizontal {
+    width: 100%;
+    margin: var(--k-sep-spacing) 0;
+}
+
+.k-separator--horizontal::before,
+.k-separator--horizontal::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--k-sep-color);
+}
+
+.k-separator--horizontal.k-separator--dashed::before,
+.k-separator--horizontal.k-separator--dashed::after {
+    border-bottom-style: dashed;
+}
+
+.k-separator--horizontal:not(.k-separator--has-label)::before {
+    border-bottom: 1px solid var(--k-sep-color);
+}
+.k-separator--horizontal:not(.k-separator--has-label).k-separator--dashed::before {
+    border-bottom-style: dashed;
+}
+.k-separator--horizontal:not(.k-separator--has-label)::after {
+    display: none;
+}
+
+.k-separator--vertical {
+    height: 100%;
+    min-height: 1em;
+    width: 1px;
+    margin: 0 var(--k-sep-spacing);
+    border-left: 1px solid var(--k-sep-color);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.k-separator--vertical.k-separator--dashed {
+    border-left-style: dashed;
+}
+
+.k-separator-label {
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--k-sep-label-color);
+    background-color: var(--k-sep-label-bg);
+    white-space: nowrap;
+}
+
+.k-separator--label-left::before {
+    flex: 0 0 5%;
+}
+
+.k-separator--label-right::after {
+    flex: 0 0 5%;
+}

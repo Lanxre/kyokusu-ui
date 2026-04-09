@@ -46,6 +46,9 @@ const {
     isToday
 } = useDatepicker(model, localeRef);
 
+const wrapperClass = computed(() => attrs.class as any);
+const wrapperStyle = computed(() => attrs.style as any);
+
 const inputAttrs = computed(() => {
     const { class: _, style: __, ...rest } = attrs;
     return rest;
@@ -85,7 +88,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="k-datepicker-wrapper" :class="$attrs.class" :style="$attrs.style" ref="containerRef">
+    <div class="k-datepicker-wrapper" :class="wrapperClass" :style="wrapperStyle" ref="containerRef">
         <label v-if="label" :for="datepickerId" class="k-datepicker-label">
             {{ label }}
         </label>
