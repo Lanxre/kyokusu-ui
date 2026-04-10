@@ -1,22 +1,30 @@
 {
   "name": "@kyokusu-ui/core",
   "version": "0.0.4",
+  "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css",
+      "style": "./dist/index.css"
+    },
+    "./style.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css",
+      "style": "./dist/index.css"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --clean && tsc --emitDeclarationOnly --declaration --outDir dist",
     "test": "bun test"
   },
-  "type": "module",
-  "types": "./dist/index.d.ts",
   "devDependencies": {
     "tsup": "^8.5.1",
     "typescript": "^6.0.2"

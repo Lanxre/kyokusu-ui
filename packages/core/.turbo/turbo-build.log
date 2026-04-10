@@ -6,8 +6,8 @@ CLI Using tsup config: /home/lanore/Projects/kyokusu-ui/packages/core/tsup.confi
 CLI Target: esnext
 CLI Cleaning output folder
 ESM Build start
-ESM dist/index.js 85.13 KB
-ESM ⚡️ Build success in 82ms
+ESM dist/index.js 119.92 KB
+ESM ⚡️ Build success in 93ms
 DTS Build start
-DTS ⚡️ Build success in 1604ms
-DTS dist/index.d.ts 6.87 KB
+DTS ⚡️ Build success in 1515ms
+DTS dist/index.d.ts 10.75 KB

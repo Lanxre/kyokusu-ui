@@ -135,7 +135,6 @@ body, html {
   box-shadow: var(--card-shadow);
 
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto 24px auto;
 

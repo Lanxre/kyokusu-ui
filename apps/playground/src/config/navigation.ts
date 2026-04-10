@@ -8,7 +8,10 @@ import {
   PhSelectionAll,
   PhLineSegment,
   PhNotification,
-  PhToolbox
+  PhToolbox,
+  PhSubtitles,
+  PhMagnifyingGlass,
+  PhBrowser
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -30,8 +33,8 @@ export const navigationGroups: NavigationGroup[] = [
     items: [
       { id: 'Input', label: 'Input', icon: PhTextT },
       { id: 'Select', label: 'Select', icon: PhListDashes },
-      { id: 'MultiSelect', label: 'MultiSelect', icon: PhSelectionAll, disabled: true },
-      { id: 'SearchSelect', label: 'SearchSelect', icon: PhCursorClick },
+      { id: 'MultiSelect', label: 'MultiSelect', icon: PhSelectionAll },
+      { id: 'SearchSelect', label: 'SearchSelect', icon: PhMagnifyingGlass },
       { id: 'DatePicker', label: 'DatePicker', icon: PhTimer }
     ]
   },
@@ -39,15 +42,17 @@ export const navigationGroups: NavigationGroup[] = [
     label: 'Content',
     items: [
       { id: 'RichText', label: 'Rich Text', icon: PhTextAa },
-      { id: 'Label', label: 'Label', icon: PhCursorClick, disabled: true },
-      { id: 'Separator', label: 'Separator', icon: PhLineSegment }
+      { id: 'Label', label: 'Label', icon: PhSubtitles },
+      { id: 'Separator', label: 'Separator', icon: PhLineSegment },
+      { id: 'Carousel', label: 'Carousel', icon: PhLineSegment },
+      { id: 'ModalWindow', label: 'Modal Window', icon: PhBrowser }
     ]
   },
   {
     label: 'Controls',
     items: [
       { id: 'Toggle', label: 'Toggle', icon: PhToggleLeft },
-      { id: 'Button', label: 'Button', icon: PhCursorClick, disabled: true },
+      { id: 'Button', label: 'Button', icon: PhCursorClick },
       { id: 'Tooltip', label: 'Tooltip', icon: PhToolbox },
       { id: 'Notification', label: 'Notification', icon: PhNotification }
     ]
