@@ -1,0 +1,189 @@
+.k-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+
+    --k-btn-bg: #18181b;
+    --k-btn-text: #ffffff;
+    --k-btn-border: transparent;
+    --k-btn-hover-bg: #3f3f46;
+    --k-btn-hover-border: transparent;
+    --k-btn-ring: rgba(24, 24, 27, 0.2);
+    --k-btn-glow: rgba(24, 24, 27, 0.4);
+
+    background-color: var(--k-btn-bg);
+    color: var(--k-btn-text);
+    border-color: var(--k-btn-border);
+}
+
+.dark .k-button {
+    --k-btn-bg: #ffffff;
+    --k-btn-text: #18181b;
+    --k-btn-border: transparent;
+    --k-btn-hover-bg: #e4e4e7;
+    --k-btn-ring: rgba(255, 255, 255, 0.2);
+    --k-btn-glow: rgba(255, 255, 255, 0.4);
+}
+
+.k-button:focus-visible {
+    box-shadow: 0 0 0 3px var(--k-btn-ring);
+}
+
+.k-button:hover:not(:disabled) {
+    background-color: var(--k-btn-hover-bg);
+    border-color: var(--k-btn-hover-border);
+}
+
+.k-button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.k-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Variants */
+.k-button--secondary {
+    --k-btn-bg: #f4f4f5;
+    --k-btn-text: #18181b;
+    --k-btn-hover-bg: #e4e4e7;
+}
+.dark .k-button--secondary {
+    --k-btn-bg: #27272a;
+    --k-btn-text: #f4f4f5;
+    --k-btn-hover-bg: #3f3f46;
+}
+
+.k-button--outline {
+    --k-btn-bg: transparent;
+    --k-btn-text: #18181b;
+    --k-btn-border: #e4e4e7;
+    --k-btn-hover-bg: #f4f4f5;
+    --k-btn-hover-border: #d4d4d8;
+}
+.dark .k-button--outline {
+    --k-btn-bg: transparent;
+    --k-btn-text: #f4f4f5;
+    --k-btn-border: #3f3f46;
+    --k-btn-hover-bg: #27272a;
+    --k-btn-hover-border: #52525b;
+}
+
+.k-button--ghost {
+    --k-btn-bg: transparent;
+    --k-btn-text: #18181b;
+    --k-btn-hover-bg: #f4f4f5;
+}
+.dark .k-button--ghost {
+    --k-btn-bg: transparent;
+    --k-btn-text: #f4f4f5;
+    --k-btn-hover-bg: #27272a;
+}
+
+.k-button--danger {
+    --k-btn-bg: #ef4444;
+    --k-btn-text: #ffffff;
+    --k-btn-hover-bg: #dc2626;
+    --k-btn-ring: rgba(239, 68, 68, 0.2);
+    --k-btn-glow: rgba(239, 68, 68, 0.4);
+}
+.dark .k-button--danger {
+    --k-btn-bg: #ef4444;
+    --k-btn-text: #ffffff;
+    --k-btn-hover-bg: #dc2626;
+    --k-btn-ring: rgba(239, 68, 68, 0.2);
+    --k-btn-glow: rgba(239, 68, 68, 0.4);
+}
+
+.k-button--accent {
+    --k-btn-bg: #eab308;
+    --k-btn-text: #ffffff;
+    --k-btn-hover-bg: #ca8a04;
+    --k-btn-ring: rgba(234, 179, 8, 0.2);
+    --k-btn-glow: rgba(234, 179, 8, 0.4);
+}
+.dark .k-button--accent {
+    --k-btn-bg: #eab308;
+    --k-btn-text: #ffffff;
+    --k-btn-hover-bg: #ca8a04;
+    --k-btn-ring: rgba(234, 179, 8, 0.2);
+    --k-btn-glow: rgba(234, 179, 8, 0.4);
+}
+
+/* Glow Effect */
+.k-button--glow:not(:disabled) {
+    box-shadow: 0 0 15px var(--k-btn-glow);
+}
+.k-button--glow:hover:not(:disabled) {
+    box-shadow: 0 0 25px var(--k-btn-glow);
+}
+
+/* Sizes */
+.k-button--sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+.k-button--md {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+.k-button--lg {
+    height: 48px;
+    padding: 0 24px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.k-button--icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Block */
+.k-button--block {
+    width: 100%;
+}
+
+/* Loading */
+.k-button-loader {
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: k-btn-spin 0.75s linear infinite;
+    display: inline-block;
+}
+
+.k-button--loading {
+    opacity: 0.8;
+    cursor: wait;
+}
+.k-button--loading:active {
+    transform: none;
+}
+
+@keyframes k-btn-spin {
+    to { transform: rotate(360deg); }
+}
