@@ -223,7 +223,7 @@ onUnmounted(() => {
 }
 
 .k-searchselect-trigger {
-    height: 15px;
+    min-height: 35px;
     width: 100%;
     background-color: var(--k-searchselect-bg);
     border: 1px solid var(--k-searchselect-border);
@@ -285,10 +285,9 @@ onUnmounted(() => {
 
 .k-searchselect-popup {
     position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
     z-index: 100;
     width: 100%;
+    min-width: max-content;
     background-color: var(--k-searchselect-popup-bg);
     border: 1px solid var(--k-searchselect-popup-border);
     border-radius: 16px;
