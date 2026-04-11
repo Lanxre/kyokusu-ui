@@ -1,0 +1,116 @@
+<script lang="ts" setup>
+import { useAttrs } from "vue";
+
+export type CardVariant = 'default' | 'outline' | 'ghost';
+export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
+
+interface Props {
+    variant?: CardVariant;
+    padding?: CardPadding;
+    shadow?: boolean;
+    tag?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    variant: 'default',
+    padding: 'md',
+    shadow: false,
+    tag: 'div'
+});
+
+const attrs = useAttrs();
+</script>
+
+<template>
+    <component
+        :is="tag"
+        class="k-card"
+        :class="[
+            `k-card--${variant}`,
+            `k-card--padding-${padding}`,
+            { 'k-card--shadow': shadow }
+        ]"
+        v-bind="attrs"
+    >
+        <div v-if="$slots.header" class="k-card-header">
+            <slot name="header"></slot>
+        </div>
+        <div class="k-card-body">
+            <slot></slot>
+        </div>
+        <div v-if="$slots.footer" class="k-card-footer">
+            <slot name="footer"></slot>
+        </div>
+    </component>
+</template>
+
+<style scoped>
+.k-card {
+    --k-card-bg: #ffffff;
+    --k-card-border: #e4e4e7;
+    --k-card-text: #18181b;
+    --k-card-subtle-text: #71717a;
+    --k-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    background-color: var(--k-card-bg);
+    border: 1px solid var(--k-card-border);
+    border-radius: 12px;
+    color: var(--k-card-text);
+    display: flex;
+    flex-direction: column;
+}
+
+.dark .k-card {
+    --k-card-bg: #18181b;
+    --k-card-border: #27272a;
+    --k-card-text: #f4f4f5;
+    --k-card-subtle-text: #a1a1aa;
+    --k-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.k-card--shadow {
+    box-shadow: var(--k-card-shadow);
+}
+
+.k-card--outline {
+    background-color: transparent;
+}
+
+.k-card--ghost {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.k-card--padding-none .k-card-body {
+    padding: 0;
+}
+
+.k-card--padding-sm .k-card-body {
+    padding: 12px;
+}
+
+.k-card--padding-md .k-card-body {
+    padding: 16px;
+}
+
+.k-card--padding-lg .k-card-body {
+    padding: 24px;
+}
+
+.k-card-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--k-card-border);
+    font-weight: 600;
+}
+
+.k-card-body {
+    flex: 1;
+    color: var(--k-card-text);
+}
+
+.k-card-footer {
+    padding: 16px;
+    border-top: 1px solid var(--k-card-border);
+    color: var(--k-card-subtle-text);
+}
+</style>
