@@ -14,6 +14,8 @@ import LabelDemo from '../components/demos/LabelDemo.vue'
 import CarouselDemo from '../components/demos/CarouselDemo.vue'
 import ModalWindowDemo from '../components/demos/ModalWindowDemo.vue'
 import ButtonDemo from '../components/demos/ButtonDemo.vue'
+import TableDemo from '../components/demos/TableDemo.vue'
+import CardDemo from '../components/demos/CardDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -29,5 +31,7 @@ export const componentDemos: Record<string, Component> = {
   Label: LabelDemo,
   Carousel: CarouselDemo,
   ModalWindow: ModalWindowDemo,
-  Button: ButtonDemo
+  Button: ButtonDemo,
+  Table: TableDemo,
+  Card: CardDemo
 }

@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+import { PhGithubLogo, PhSquaresFour } from '@phosphor-icons/vue';
+import { GITHUB_URL } from '../const';
+
+</script>
+
 <template>
   <footer class="footer">
     <div class="container">
@@ -15,13 +22,17 @@
         <div class="footer-links">
           <div class="link-group">
             <h4>Resources</h4>
-            <a href="/docs">Documentation</a>
-            <a href="#components">Components</a>
+            <RouterLink to="/playground" class="link">
+                <PhSquaresFour size="16" weight="bold" />
+                Playground
+            </RouterLink>
           </div>
           <div class="link-group">
             <h4>Community</h4>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a :href="GITHUB_URL" target="_blank" rel="noopener noreferrer">
+                <PhGithubLogo size="16" weight="bold" />
+                GitHub
+            </a>
           </div>
         </div>
       </div>
@@ -90,5 +101,21 @@
 
 .link-group a:hover {
   color: var(--text-primary);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.link svg {
+  width: 16px;
+  height: 16px;
 }
 </style>

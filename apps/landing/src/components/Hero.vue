@@ -8,8 +8,8 @@ import { PhArrowRight } from '@phosphor-icons/vue'
       <div class="hero-content">
 
         <h1 class="hero-title animate-fade-in-up" style="animation-delay: 100ms;">
-          Crafted for perfection.<br/>
-          <span class="text-accent-gradient">Built for Vue 3.</span>
+          Kyokusu for perfection<br/>
+          <span class="text-accent-gradient">Built for Vue 3</span>
         </h1>
         
         <p class="hero-desc animate-fade-in-up" style="animation-delay: 200ms;">
@@ -23,13 +23,13 @@ import { PhArrowRight } from '@phosphor-icons/vue'
         </div>
         
         <div class="hero-actions animate-fade-in-up" style="animation-delay: 300ms;">
-          <a href="/docs" class="btn btn-primary">
+          <router-link to="/playground" class="btn btn-primary">
             Start Building
             <PhArrowRight :size="16" weight="bold" class="btn-icon" />
-          </a>
-          <a href="#components" class="btn btn-secondary">
+          </router-link>
+          <router-link :to="{ path: '/', hash: '#components' }" class="btn btn-secondary">
             Explore Components
-          </a>
+          </router-link>
         </div>
       </div>
       

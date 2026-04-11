@@ -11,4 +11,6 @@ export * from './Notification';
 export * from './Label';
 export * from './ModalWindow';
 export * from './Carousel';
+export * from './Table';
 export * from './Button';
+export * from './Card';

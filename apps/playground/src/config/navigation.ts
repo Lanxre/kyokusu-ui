@@ -11,7 +11,9 @@ import {
   PhToolbox,
   PhSubtitles,
   PhMagnifyingGlass,
-  PhBrowser
+  PhBrowser,
+  PhTable,
+  PhCards
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -35,12 +37,14 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Select', label: 'Select', icon: PhListDashes },
       { id: 'MultiSelect', label: 'MultiSelect', icon: PhSelectionAll },
       { id: 'SearchSelect', label: 'SearchSelect', icon: PhMagnifyingGlass },
-      { id: 'DatePicker', label: 'DatePicker', icon: PhTimer }
+      { id: 'DatePicker', label: 'DatePicker', icon: PhTimer },
+      { id: 'Table', label: 'Table', icon: PhTable }
     ]
   },
   {
     label: 'Content',
     items: [
+      { id: 'Card', label: 'Card', icon: PhCards },
       { id: 'RichText', label: 'Rich Text', icon: PhTextAa },
       { id: 'Label', label: 'Label', icon: PhSubtitles },
       { id: 'Separator', label: 'Separator', icon: PhLineSegment },

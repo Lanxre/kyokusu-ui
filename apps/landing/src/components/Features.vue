@@ -1,38 +1,8 @@
 <script setup lang="ts">
-import { PhPaintBrush, PhLightning, PhCode, PhPuzzlePiece, PhEye, PhFeather } from '@phosphor-icons/vue'
+import { Card } from '@kyokusu-ui/vue'
+import { useFeatures } from '../composables/useFeatures'
 
-const features = [
-  {
-    title: 'Beautiful by Default',
-    desc: 'Carefully crafted components that look stunning out of the box, requiring zero configuration for a premium feel.',
-    icon: PhPaintBrush
-  },
-  {
-    title: 'Excellent Developer Experience',
-    desc: 'Built ground-up with Vue 3 Composition API and strict TypeScript. Full IDE autocompletion and type safety.',
-    icon: PhCode
-  },
-  {
-    title: 'Lightweight & Performant',
-    desc: 'Zero heavy dependencies. Highly optimized rendering logic ensuring 60fps animations and instant interactions.',
-    icon: PhLightning
-  },
-  {
-    title: 'Highly Customizable',
-    desc: 'Powered entirely by CSS variables. Easily adapt the design system to your brand with just a few overrides.',
-    icon: PhPuzzlePiece
-  },
-  {
-    title: 'Fully Accessible',
-    desc: 'Keyboard navigation, screen reader support, and ARIA attributes built into every interactive component.',
-    icon: PhEye
-  },
-  {
-    title: 'Quiet Luxury Design',
-    desc: 'Restrained, calm, and sophisticated. No flashy distracting elements—just pure, confident UI.',
-    icon: PhFeather
-  }
-]
+const { features } = useFeatures()
 </script>
 
 <template>
@@ -44,13 +14,19 @@ const features = [
       </div>
 
       <div class="features-grid">
-        <div v-for="(feature, index) in features" :key="index" class="feature-card">
+        <Card 
+          v-for="(feature, index) in features" 
+          :key="index" 
+          class="feature-card"
+          variant="default"
+          padding="lg"
+        >
           <div class="feature-icon-wrapper">
             <component :is="feature.icon" :size="24" weight="duotone" class="feature-icon" />
           </div>
           <h3 class="feature-title">{{ feature.title }}</h3>
           <p class="feature-desc">{{ feature.desc }}</p>
-        </div>
+        </Card>
       </div>
     </div>
   </section>
@@ -90,20 +66,15 @@ const features = [
 }
 
 .feature-card {
-  background-color: var(--bg-base);
-  border: 1px solid var(--border-default);
-  border-radius: 16px;
-  padding: 32px;
   transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  height: 100%;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: var(--border-strong);
+  cursor: default;
 }
 
 .feature-icon-wrapper {
@@ -137,5 +108,6 @@ const features = [
   font-size: 0.9375rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  margin: 0;
 }
 </style>

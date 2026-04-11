@@ -1,4 +1,40 @@
 $ tsup src/index.ts --format esm --clean && tsc --emitDeclarationOnly --declaration --outDir dist
+▲ [WARNING] The condition "style" here will never be used as it comes after both "import" and "require" [package.json]
+
+    package.json:16:6:
+      16 │       "style": "./dist/index.css"
+         ╵       ~~~~~~~
+
+  The "import" condition comes earlier and will be used for all "import" statements:
+
+    package.json:14:6:
+      14 │       "import": "./dist/index.css",
+         ╵       ~~~~~~~~
+
+  The "require" condition comes earlier and will be used for all "require" calls:
+
+    package.json:15:6:
+      15 │       "require": "./dist/index.css",
+         ╵       ~~~~~~~~~
+
+▲ [WARNING] The condition "style" here will never be used as it comes after both "import" and "require" [package.json]
+
+    package.json:21:6:
+      21 │       "style": "./dist/index.css"
+         ╵       ~~~~~~~
+
+  The "import" condition comes earlier and will be used for all "import" statements:
+
+    package.json:19:6:
+      19 │       "import": "./dist/index.css",
+         ╵       ~~~~~~~~
+
+  The "require" condition comes earlier and will be used for all "require" calls:
+
+    package.json:20:6:
+      20 │       "require": "./dist/index.css",
+         ╵       ~~~~~~~~~
+
 CLI Building entry: src/index.ts
 CLI Using tsconfig: tsconfig.json
 CLI tsup v8.5.1
@@ -6,8 +42,50 @@ CLI Using tsup config: /home/lanore/Projects/kyokusu-ui/packages/core/tsup.confi
 CLI Target: esnext
 CLI Cleaning output folder
 ESM Build start
-ESM dist/index.js 119.92 KB
-ESM ⚡️ Build success in 93ms
+
+ WARN  [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
+
+    package.json:16:6:
+[37m      16 │       [32m"style"[37m: "./dist/index.css"
+         ╵       [32m~~~~~~~[0m
+
+  The "import" condition comes earlier and will be used for all "import" statements:
+
+    package.json:14:6:
+[37m      14 │       [32m"import"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~[0m
+
+  The "require" condition comes earlier and will be used for all "require" calls:
+
+    package.json:15:6:
+[37m      15 │       [32m"require"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~~[0m
+
+
+
+
+ WARN  [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
+
+    package.json:21:6:
+[37m      21 │       [32m"style"[37m: "./dist/index.css"
+         ╵       [32m~~~~~~~[0m
+
+  The "import" condition comes earlier and will be used for all "import" statements:
+
+    package.json:19:6:
+[37m      19 │       [32m"import"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~[0m
+
+  The "require" condition comes earlier and will be used for all "require" calls:
+
+    package.json:20:6:
+[37m      20 │       [32m"require"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~~[0m
+
+
+
+ESM dist/index.js 127.73 KB
+ESM ⚡️ Build success in 133ms
 DTS Build start
-DTS ⚡️ Build success in 1515ms
-DTS dist/index.d.ts 10.75 KB
+DTS ⚡️ Build success in 1609ms
+DTS dist/index.d.ts 11.94 KB

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Button, Input, Toggle, SearchSelect } from '@kyokusu-ui/vue'
+import { Button, Input, Toggle, SearchSelect, Card } from '@kyokusu-ui/vue'
+import { useShowcase } from '../composables/useShowcase'
 
-const toggleVal = ref(true)
-const searchVal = ref<string | null>(null)
-const searchOpts = ['Inter', 'SF Pro', 'Geist', 'JetBrains Mono', 'Fira Code']
+const { toggleVal, searchVal, searchOpts } = useShowcase()
 </script>
 
 <template>
@@ -19,36 +17,32 @@ const searchOpts = ['Inter', 'SF Pro', 'Geist', 'JetBrains Mono', 'Fira Code']
 
         <div class="showcase-grid">
           
-          <!-- Card 1: Buttons -->
-          <div class="component-card">
-            <div class="card-header">Buttons</div>
-            <div class="card-body flex-row">
+          <Card class="component-card">
+            <template #header>Buttons</template>
+            <div class="card-body-content flex-row">
               <Button variant="primary">Deploy</Button>
               <Button variant="outline">Preview</Button>
             </div>
-          </div>
+          </Card>
 
-          <!-- Card 2: Input -->
-          <div class="component-card">
-            <div class="card-header">Inputs & Forms</div>
-            <div class="card-body">
+          <Card class="component-card">
+            <template #header>Inputs & Forms</template>
+            <div class="card-body-content">
               <Input id="demo-input" label="Project Name" placeholder="acme-corp" />
             </div>
-          </div>
-
-          <!-- Card 3: Toggle -->
-          <div class="component-card">
-            <div class="card-header">Interactive Controls</div>
-            <div class="card-body flex-row justify-between">
+          </Card>
+          
+          <Card class="component-card">
+            <template #header>Interactive Controls</template>
+            <div class="card-body-content flex-row justify-between">
               <span class="text-sm font-medium text-secondary">Enable Analytics</span>
               <Toggle v-model="toggleVal" />
             </div>
-          </div>
+          </Card>
 
-          <!-- Card 4: Search Select -->
-          <div class="component-card">
-            <div class="card-header">Complex Selectors</div>
-            <div class="card-body">
+          <Card class="component-card">
+            <template #header>Complex Selectors</template>
+            <div class="card-body-content">
               <SearchSelect 
                 v-model="searchVal" 
                 :options="searchOpts" 
@@ -56,7 +50,7 @@ const searchOpts = ['Inter', 'SF Pro', 'Geist', 'JetBrains Mono', 'Fira Code']
                 placeholder="Search fonts..." 
               />
             </div>
-          </div>
+          </Card>
 
         </div>
 
@@ -112,13 +106,11 @@ const searchOpts = ['Inter', 'SF Pro', 'Geist', 'JetBrains Mono', 'Fira Code']
 
 .component-card {
   background-color: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  overflow: visible; /* To allow SearchSelect dropdown to overflow */
 }
 
-.card-header {
+/* Deep targeting Card components inside showcase */
+:deep(.k-card-header) {
   padding: 12px 20px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -127,9 +119,15 @@ const searchOpts = ['Inter', 'SF Pro', 'Geist', 'JetBrains Mono', 'Fira Code']
   color: var(--text-tertiary);
   border-bottom: 1px solid var(--border-default);
   background-color: var(--bg-surface-elevated);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.card-body {
+:deep(.k-card-body) {
+  padding: 0; /* Let the content wrapper handle padding to preserve flex rules */
+}
+
+.card-body-content {
   padding: 32px 20px;
   display: flex;
   flex-direction: column;

@@ -7,8 +7,8 @@
     "apps/*"
   ],
   "scripts": {
+    "dev": "turbo run dev",
     "build": "turbo run build",
-    "dev": "cd apps/playground && bun run dev && cd packages/vue && bun run dev",
     "test": "turbo run test"
   },
   "devDependencies": {

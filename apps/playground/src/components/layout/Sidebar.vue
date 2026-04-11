@@ -12,7 +12,7 @@ const { toggleTheme, setCurrentComponent } = appStore
 <template>
   <aside class="sidebar">
     <div class="sidebar-header">
-      <span class="logo">Kyokusu UI</span>
+      <a href="/" class="logo">Kyokusu UI</a>
 
       <div class="theme-switcher">
         <span class="theme-label" @click="toggleTheme">
@@ -63,6 +63,13 @@ const { toggleTheme, setCurrentComponent } = appStore
 .logo {
   font-weight: 700;
   font-size: 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.8;
 }
 
 .menu {

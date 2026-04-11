@@ -12,3 +12,5 @@ export * from "./components/label";
 export * from "./components/modal-window";
 export * from "./components/carousel";
 export * from "./components/button";
+export * from "./components/table";
+export * from "./components/card";

@@ -1,21 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { PhCopy, PhCheck } from '@phosphor-icons/vue'
+import { PhCopy, PhCheck, PhArrowUpRight } from '@phosphor-icons/vue'
+import { useClipboard } from '../composables/useClipboard'
 
-const copied = ref(false)
-const code = 'bun add @kyokusu-ui/vue @kyokusu-ui/core'
+const { copied: copiedVue, copy: copyVue } = useClipboard()
+const { copied: copiedCore, copy: copyCore } = useClipboard()
 
-const copyCode = async () => {
-  try {
-    await navigator.clipboard.writeText(code)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  } catch (err) {
-    console.error('Failed to copy text: ', err)
-  }
-}
+const codeVue = 'bun add @kyokusu-ui/vue'
+const codeCore = 'bun add @kyokusu-ui/core'
 </script>
 
 <template>
@@ -25,16 +16,34 @@ const copyCode = async () => {
         <h2 class="cta-title">Ready to elevate your UI?</h2>
         <p class="cta-desc">Start building faster with beautifully crafted components today.</p>
         
-        <div class="code-block">
-          <span class="prompt">$</span>
-          <code class="code-text">{{ code }}</code>
-          <button @click="copyCode" class="copy-btn" :aria-label="copied ? 'Copied' : 'Copy code'">
-            <component :is="copied ? PhCheck : PhCopy" :size="18" weight="bold" />
-          </button>
+        <div class="code-block-wrapper">
+          <p class="code-label">For Vue 3 projects</p>
+          <div class="code-block">
+            <span class="prompt">$</span>
+            <code class="code-text">{{ codeVue }}</code>
+            <button @click="copyVue(codeVue)" class="copy-btn" :aria-label="copiedVue ? 'Copied' : 'Copy code'">
+              <component :is="copiedVue ? PhCheck : PhCopy" :size="18" weight="bold" />
+            </button>
+          </div>
+        </div>
+        
+        <div class="code-block-wrapper">
+          <p class="code-label">For pure CSS / Vanilla JS</p>
+          <div class="code-block">
+            <span class="prompt">$</span>
+            <code class="code-text">{{ codeCore }}</code>
+            <button @click="copyCore(codeCore)" class="copy-btn" :aria-label="copiedCore ? 'Copied' : 'Copy code'">
+              <component :is="copiedCore ? PhCheck : PhCopy" :size="18" weight="bold" />
+            </button>
+          </div>
         </div>
 
         <p class="docs-link">
-          Or read the <a href="/docs">installation documentation →</a>
+          Or view the 
+          <router-link to="/playground" class="playground-link">
+              components playground
+              <PhArrowUpRight :size="18" weight="bold" />
+          </router-link>
         </p>
       </div>
     </div>
@@ -71,6 +80,22 @@ const copyCode = async () => {
   line-height: 1.6;
 }
 
+.code-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+
+.code-label {
+  align-self: flex-start;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
 .code-block {
   display: flex;
   align-items: center;
@@ -78,11 +103,9 @@ const copyCode = async () => {
   background-color: var(--bg-base);
   border: 1px solid var(--border-strong);
   border-radius: 12px;
+  gap: 12px;
   padding: 12px 16px;
-  width: 100%;
-  max-width: 480px;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 24px;
 }
 
 .prompt {
@@ -107,6 +130,24 @@ const copyCode = async () => {
   display: none;
 }
 
+.playground-link {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.playground-link a {
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.playground-link a:hover {
+  color: var(--accent-base);
+}
+
 .copy-btn {
   display: flex;
   align-items: center;
@@ -126,6 +167,10 @@ const copyCode = async () => {
 }
 
 .docs-link {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
   font-size: 0.9375rem;
   color: var(--text-secondary);
 }
