@@ -8,6 +8,7 @@ export interface DatePickerOptions {
     placeholder?: string;
     locale?: string;
     error?: string;
+    type?: 'date' | 'year';
     onChange?: (value: string) => void;
 }
 
@@ -29,6 +30,7 @@ export class DatePicker {
     private viewDate: Date = new Date();
     private viewMode: 'days' | 'years' = 'days';
     private isOpen = false;
+    private type: 'date' | 'year' = 'date';
 
     private wrapperEl!: HTMLDivElement;
     private inputEl!: HTMLInputElement;
@@ -40,7 +42,8 @@ export class DatePicker {
         if (!target) throw new Error('[Kyokusu UI] Target element for DatePicker not found');
 
         this.container = target as HTMLElement;
-        this.options = { locale: 'ru-RU', ...options };
+        this.options = { locale: 'ru-RU', type: 'date', ...options };
+        this.type = this.options.type || 'date';
         this.value = options.value || '';
         
         this.documentClickHandler = this.handleClickOutside.bind(this);
@@ -72,6 +75,11 @@ export class DatePicker {
 
     private getFormattedValue() {
         if (!this.value) return '';
+        
+        if (this.type === 'year') {
+            return this.value;
+        }
+        
         const date = this.parseDate(this.value);
         if (!date) return this.value;
         return new Intl.DateTimeFormat(this.options.locale, {
@@ -137,11 +145,10 @@ export class DatePicker {
 
     private toggleCalendar() {
         this.isOpen = !this.isOpen;
-        this.viewMode = 'days';
+        this.viewMode = this.type === 'year' ? 'years' : 'days';
         if (this.isOpen) {
             this.initDate();
             this.renderPopup();
-            // trigger layout
             void this.popupEl?.offsetWidth;
             this.popupEl?.classList.add('k-datepicker-popup--visible');
         } else {
@@ -176,95 +183,109 @@ export class DatePicker {
         this.popupEl = this.createEl('div', 'k-datepicker-popup');
         this.popupEl.appendChild(this.createEl('div', 'k-datepicker-mobile-drag'));
 
-        // Header
-        const headerEl = this.createEl('div', 'k-datepicker-header');
-        
-        if (this.viewMode === 'days') {
-            const prevBtn = this.createEl('button', 'k-datepicker-nav-btn', { innerHTML: ICONS.caretLeft });
-            prevBtn.addEventListener('click', (e) => { e.preventDefault(); this.prevMonth(); });
-            headerEl.appendChild(prevBtn);
-        } else {
-            headerEl.appendChild(this.createEl('div', 'k-datepicker-spacer'));
+        const selectedYear = this.value && this.type === 'year' ? Number(this.value) : null;
+
+        // Header - hide for year type
+        if (this.type !== 'year') {
+            const headerEl = this.createEl('div', 'k-datepicker-header');
+            
+            if (this.viewMode === 'days') {
+                const prevBtn = this.createEl('button', 'k-datepicker-nav-btn', { innerHTML: ICONS.caretLeft });
+                prevBtn.addEventListener('click', (e) => { e.preventDefault(); this.prevMonth(); });
+                headerEl.appendChild(prevBtn);
+            } else {
+                headerEl.appendChild(this.createEl('div', 'k-datepicker-spacer'));
+            }
+
+            const titleEl = this.createEl('div', 'k-datepicker-title');
+            
+            const monthName = this.viewMode === 'days' 
+                ? new Intl.DateTimeFormat(this.options.locale, { month: 'long' }).format(this.viewDate)
+                : (this.options.locale?.startsWith('ru') ? 'Выберите год' : 'Select year');
+            
+            titleEl.appendChild(this.createEl('span', 'k-datepicker-month', { 
+                textContent: monthName.charAt(0).toUpperCase() + monthName.slice(1)
+            }));
+
+            const yearBtn = this.createEl('button', 'k-datepicker-year-toggle', {
+                textContent: this.viewDate.getFullYear().toString()
+            });
+            yearBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.viewMode = this.viewMode === 'days' ? 'years' : 'days';
+                this.renderPopup();
+                this.popupEl?.classList.add('k-datepicker-popup--visible');
+            });
+            titleEl.appendChild(yearBtn);
+            headerEl.appendChild(titleEl);
+
+            if (this.viewMode === 'days') {
+                const nextBtn = this.createEl('button', 'k-datepicker-nav-btn', { innerHTML: ICONS.caretRight });
+                nextBtn.addEventListener('click', (e) => { e.preventDefault(); this.nextMonth(); });
+                headerEl.appendChild(nextBtn);
+            } else {
+                headerEl.appendChild(this.createEl('div', 'k-datepicker-spacer'));
+            }
+
+            this.popupEl.appendChild(headerEl);
         }
-
-        const titleEl = this.createEl('div', 'k-datepicker-title');
-        
-        const monthName = this.viewMode === 'days' 
-            ? new Intl.DateTimeFormat(this.options.locale, { month: 'long' }).format(this.viewDate)
-            : (this.options.locale?.startsWith('ru') ? 'Выберите год' : 'Select year');
-        
-        titleEl.appendChild(this.createEl('span', 'k-datepicker-month', { 
-            textContent: monthName.charAt(0).toUpperCase() + monthName.slice(1)
-        }));
-
-        const yearBtn = this.createEl('button', 'k-datepicker-year-toggle', {
-            textContent: this.viewDate.getFullYear().toString()
-        });
-        yearBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.viewMode = this.viewMode === 'days' ? 'years' : 'days';
-            this.renderPopup();
-            this.popupEl?.classList.add('k-datepicker-popup--visible');
-        });
-        titleEl.appendChild(yearBtn);
-        headerEl.appendChild(titleEl);
-
-        if (this.viewMode === 'days') {
-            const nextBtn = this.createEl('button', 'k-datepicker-nav-btn', { innerHTML: ICONS.caretRight });
-            nextBtn.addEventListener('click', (e) => { e.preventDefault(); this.nextMonth(); });
-            headerEl.appendChild(nextBtn);
-        } else {
-            headerEl.appendChild(this.createEl('div', 'k-datepicker-spacer'));
-        }
-
-        this.popupEl.appendChild(headerEl);
 
         // Body
-        if (this.viewMode === 'days') {
+        if (this.type === 'year' || this.viewMode === 'days') {
             const bodyEl = this.createEl('div', 'k-datepicker-body');
             
-            // Weekdays
-            const weekdaysEl = this.createEl('div', 'k-datepicker-weekdays');
-            const fmt = new Intl.DateTimeFormat(this.options.locale, { weekday: 'short' });
-            for (let i = 0; i < 7; i++) {
-                const name = fmt.format(new Date(2024, 0, i + 1));
-                weekdaysEl.appendChild(this.createEl('div', 'k-datepicker-weekday', {
-                    textContent: name.charAt(0).toUpperCase() + name.slice(1)
-                }));
+            if (this.type !== 'year') {
+                // Weekdays
+                const weekdaysEl = this.createEl('div', 'k-datepicker-weekdays');
+                const fmt = new Intl.DateTimeFormat(this.options.locale, { weekday: 'short' });
+                for (let i = 0; i < 7; i++) {
+                    const name = fmt.format(new Date(2024, 0, i + 1));
+                    weekdaysEl.appendChild(this.createEl('div', 'k-datepicker-weekday', {
+                        textContent: name.charAt(0).toUpperCase() + name.slice(1)
+                    }));
+                }
+                bodyEl.appendChild(weekdaysEl);
             }
-            bodyEl.appendChild(weekdaysEl);
 
-            // Grid
-            const gridEl = this.createEl('div', 'k-datepicker-grid');
-            const year = this.viewDate.getFullYear();
-            const month = this.viewDate.getMonth();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const yearsEl = this.createEl('div', 'k-datepicker-years');
+            const currentYear = new Date().getFullYear();
+            let selectedYearEl: HTMLButtonElement | null = null;
             
-            let startDay = new Date(year, month, 1).getDay();
-            startDay = startDay === 0 ? 6 : startDay - 1;
-
-            for (let i = 0; i < startDay; i++) {
-                gridEl.appendChild(this.createEl('div', 'k-datepicker-empty'));
-            }
-
-            const todayISO = toISODate(new Date());
-            const selectedISO = this.value ? toISODate(this.parseDate(this.value)!) : null;
-
-            for (let i = 1; i <= daysInMonth; i++) {
-                const dateISO = toISODate(new Date(year, month, i));
-                const dayBtn = this.createEl('button', 'k-datepicker-day', { textContent: i.toString() });
+            for (let i = 0; i < 150; i++) {
+                const y = currentYear + 10 - i;
+                const yearBtn = this.createEl('button', 'k-datepicker-year', { textContent: y.toString() });
                 
-                if (dateISO === selectedISO) dayBtn.classList.add('k-datepicker-day--selected');
-                else if (dateISO === todayISO) dayBtn.classList.add('k-datepicker-day--today');
-
-                dayBtn.addEventListener('click', (e) => {
+                if (this.type === 'year') {
+                    if (y === selectedYear) {
+                        yearBtn.classList.add('k-datepicker-year--selected');
+                        selectedYearEl = yearBtn;
+                    }
+                } else {
+                    if (y === this.viewDate.getFullYear()) {
+                        yearBtn.classList.add('k-datepicker-year--selected');
+                        selectedYearEl = yearBtn;
+                    }
+                }
+                
+                yearBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    this.selectDate(dateISO);
+                    if (this.type === 'year') {
+                        this.selectYear(y);
+                    } else {
+                        this.viewDate = new Date(y, this.viewDate.getMonth(), 1);
+                        this.viewMode = 'days';
+                        this.renderPopup();
+                        this.popupEl?.classList.add('k-datepicker-popup--visible');
+                    }
                 });
-                gridEl.appendChild(dayBtn);
+                yearsEl.appendChild(yearBtn);
             }
-            bodyEl.appendChild(gridEl);
+            bodyEl.appendChild(yearsEl);
             this.popupEl.appendChild(bodyEl);
+
+            if (selectedYearEl) {
+                setTimeout(() => selectedYearEl!.scrollIntoView({ block: 'center' }), 10);
+            }
         } else {
             const yearsEl = this.createEl('div', 'k-datepicker-years');
             const currentYear = new Date().getFullYear();
@@ -315,8 +336,19 @@ export class DatePicker {
         this.toggleCalendar();
     }
 
+    private selectYear(year: number) {
+        this.value = String(year);
+        this.inputEl.value = this.getFormattedValue();
+        if (this.options.onChange) this.options.onChange(this.value);
+        this.toggleCalendar();
+    }
+
     public updateOptions(newOptions: Partial<DatePickerOptions>) {
         this.options = { ...this.options, ...newOptions };
+        if (newOptions.type !== undefined) {
+            this.type = newOptions.type;
+            this.inputEl.value = this.getFormattedValue();
+        }
         if (newOptions.value !== undefined) {
             this.value = newOptions.value;
             this.inputEl.value = this.getFormattedValue();

@@ -6,6 +6,7 @@ const basicVal = ref('')
 const prefilledVal = ref('2026-04-08')
 const errorVal = ref('')
 const enVal = ref('')
+const yearVal = ref('')
 
 const propsDescription = [
   { name: 'v-model', type: 'string', default: "''", desc: 'Выбранная дата в формате YYYY-MM-DD или DD.MM.YYYY.' },
@@ -14,7 +15,8 @@ const propsDescription = [
   { name: 'locale', type: 'string', default: "'ru-RU'", desc: 'Локаль для форматирования дат (например, en-US, de-DE).' },
   { name: 'error', type: 'string', default: 'undefined', desc: 'Текст ошибки и красная обводка.' },
   { name: 'disabled', type: 'boolean', default: 'false', desc: 'Блокировка компонента.' },
-  { name: 'id', type: 'string', default: 'useId()', desc: 'Автоматический ID.' }
+  { name: 'id', type: 'string', default: 'useId()', desc: 'Автоматический ID.' },
+  { name: 'type', type: "'date' | 'year'", default: "'date'", desc: 'Режим выбора: дата или только год.' }
 ]
 </script>
 
@@ -59,6 +61,19 @@ const propsDescription = [
           label="Archived Date"
           :disabled="true"
         />
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Year Picker</h3>
+      <DatePicker 
+        v-model="yearVal" 
+        label="Select Year"
+        type="year"
+        placeholder="YYYY"
+      />
+      <div class="status">
+        Value: <strong>{{ yearVal || 'empty' }}</strong>
       </div>
     </div>
 

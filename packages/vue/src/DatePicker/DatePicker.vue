@@ -12,10 +12,12 @@ interface Props {
     placeholder?: string;
     locale?: string;
     error?: string;
+    type?: "date" | "year";
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    locale: "ru-RU"
+    locale: "ru-RU",
+    type: "date"
 });
 
 const model = defineModel<string>({ default: "" });
@@ -27,6 +29,8 @@ const yearListRef = ref<HTMLElement | null>(null);
 
 const localeRef = computed(() => props.locale);
 
+const typeRef = computed(() => props.type);
+
 const {
     isOpen,
     viewMode,
@@ -36,6 +40,7 @@ const {
     currentYear,
     calendarDays,
     availableYears,
+    selectedYear,
     uiLabels,
     initDate,
     selectDate,
@@ -44,7 +49,7 @@ const {
     nextMonth,
     isSelected,
     isToday
-} = useDatepicker(model, localeRef);
+} = useDatepicker(model, localeRef, typeRef);
 
 const wrapperClass = computed(() => attrs.class as any);
 const wrapperStyle = computed(() => attrs.style as any);
@@ -64,7 +69,7 @@ const handleClickOutside = (event: MouseEvent) => {
 const toggleCalendar = () => {
     if (props.disabled) return;
     isOpen.value = !isOpen.value;
-    viewMode.value = "days";
+    viewMode.value = props.type === "year" ? "years" : "days";
     if (isOpen.value) initDate();
 };
 
@@ -120,7 +125,7 @@ onUnmounted(() => {
             <div v-if="isOpen && !disabled" class="k-datepicker-popup">
                 <div class="k-datepicker-mobile-drag"></div>
                 
-                <div class="k-datepicker-header">
+                <div v-if="type !== 'year'" class="k-datepicker-header">
                     <button 
                         v-if="viewMode === 'days'"
                         @click.prevent="prevMonth"
@@ -152,15 +157,24 @@ onUnmounted(() => {
                     <div v-else class="k-datepicker-spacer"></div>
                 </div>
 
-                <div v-if="viewMode === 'days'" class="k-datepicker-body">
-                    <div class="k-datepicker-weekdays">
+                <div v-if="type === 'year' || viewMode === 'days'" class="k-datepicker-body">
+                    <div v-if="type !== 'year'" class="k-datepicker-weekdays">
                         <div v-for="day in weekDays" :key="day" class="k-datepicker-weekday">
                             {{ day }}
                         </div>
                     </div>
 
-                    <div class="k-datepicker-grid">
-                        <template v-for="(dayObj, index) in calendarDays" :key="index">
+                    <div :class="type === 'year' ? 'k-datepicker-years' : 'k-datepicker-grid'">
+                        <template v-if="type === 'year'" v-for="year in availableYears" :key="year">
+                            <button 
+                                @click.prevent="selectYear(year)"
+                                class="k-datepicker-year"
+                                :class="{ 'k-datepicker-year--selected': year === selectedYear }"
+                            >
+                                {{ year }}
+                            </button>
+                        </template>
+                        <template v-else v-for="(dayObj, index) in calendarDays" :key="index">
                             <div v-if="!dayObj.day" class="k-datepicker-empty"></div>
                             
                             <button 
@@ -184,7 +198,7 @@ onUnmounted(() => {
                         :key="year"
                         @click.prevent="selectYear(year)"
                         class="k-datepicker-year"
-                        :class="{ 'k-datepicker-year--selected': year === currentYear }"
+                        :class="{ 'k-datepicker-year--selected': year === selectedYear }"
                     >
                         {{ year }}
                     </button>

@@ -9,7 +9,7 @@ const toISODate = (d: Date): string => {
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 };
 
-export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string>) {
+export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string>, type: Ref<"date" | "year">) {
     const viewDate = ref(new Date());
     const viewMode = ref<"days" | "years">("days");
     const isOpen = ref(false);
@@ -35,6 +35,11 @@ export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string
 
     const formattedValue = computed(() => {
         if (!model.value) return "";
+        
+        if (type.value === "year") {
+            return model.value;
+        }
+        
         const date = parseDate(model.value);
         if (!date) return model.value;
         return new Intl.DateTimeFormat(locale.value, {
@@ -82,6 +87,15 @@ export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string
         return days;
     });
 
+    const selectedYear = computed(() => {
+        if (!model.value) return null;
+        if (type.value === "year") {
+            return Number(model.value) || null;
+        }
+        const date = parseDate(model.value);
+        return date ? date.getFullYear() : null;
+    });
+
     const availableYears = computed(() => {
         const current = new Date().getFullYear() + 10;
         return Array.from({ length: 150 }, (_, i) => current - i);
@@ -93,6 +107,11 @@ export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string
     };
 
     const selectYear = (year: number) => {
+        if (type.value === "year") {
+            model.value = String(year);
+            isOpen.value = false;
+            return;
+        }
         viewDate.value = new Date(year, viewDate.value.getMonth(), 1);
         viewMode.value = "days";
     };
@@ -128,6 +147,7 @@ export function useDatepicker(model: Ref<string | undefined>, locale: Ref<string
         currentYear,
         calendarDays,
         availableYears,
+        selectedYear,
         uiLabels,
         initDate,
         selectDate,
