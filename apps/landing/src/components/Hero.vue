@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PhArrowRight } from '@phosphor-icons/vue'
+import { Button } from '@kyokusu-ui/vue';
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import { PhArrowRight } from '@phosphor-icons/vue'
         
         <p class="hero-desc animate-fade-in-up" style="animation-delay: 200ms;">
           A premium, minimalist, and highly customizable UI component library. 
-          Designed with quiet luxury in mind, engineered for high-performance modern web applications.
+        Designed with quiet luxury in mind, engineered for high-performance modern web applications.
         </p>
         
         <div class="badge animate-fade-in-up" style="animation-delay: 0ms;">
@@ -23,13 +24,13 @@ import { PhArrowRight } from '@phosphor-icons/vue'
         </div>
         
         <div class="hero-actions animate-fade-in-up" style="animation-delay: 300ms;">
-          <router-link to="/playground" class="btn btn-primary">
+          <Button as="router-link" to="/playground" size="lg" variant="primary" class="btn-icon-wrapper" style="font-weight: 600;">
             Start Building
             <PhArrowRight :size="16" weight="bold" class="btn-icon" />
-          </router-link>
-          <router-link :to="{ path: '/', hash: '#components' }" class="btn btn-secondary">
+          </Button>
+          <Button as="router-link" :to="{ path: '/', hash: '#components' }" size="lg" variant="outline">
             Explore Components
-          </router-link>
+          </Button>
         </div>
       </div>
       
@@ -139,53 +140,14 @@ import { PhArrowRight } from '@phosphor-icons/vue'
   opacity: 0;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 24px;
-  height: 48px;
-  border-radius: 12px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: var(--text-primary);
-  color: var(--bg-base);
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  opacity: 0.9;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-strong);
-}
-
-.btn-secondary:hover {
-  background-color: var(--bg-surface-elevated);
-}
-
-.btn-icon {
+.btn-icon-wrapper :deep(.btn-icon) {
   transition: transform var(--transition-fast);
 }
 
-.btn-primary:hover .btn-icon {
+.btn-icon-wrapper:hover :deep(.btn-icon) {
   transform: translateX(4px);
 }
 
-/* Visual Representation */
 .hero-visual {
   position: relative;
   width: 100%;
@@ -305,7 +267,7 @@ import { PhArrowRight } from '@phosphor-icons/vue'
     flex-direction: column;
     width: 100%;
   }
-  .btn {
+  .hero-actions :deep(.k-button) {
     width: 100%;
   }
   .hero-visual {

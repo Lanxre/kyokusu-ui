@@ -71,8 +71,7 @@ const isDisabled = computed(() => props.disabled || props.loading);
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: 1px solid transparent;
-    border-radius: 8px;
+    border: 1px solid transparent;    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     outline: none;
@@ -184,6 +183,12 @@ const isDisabled = computed(() => props.disabled || props.loading);
     --k-btn-hover-bg: #ca8a04;
     --k-btn-ring: rgba(234, 179, 8, 0.2);
     --k-btn-glow: rgba(234, 179, 8, 0.4);
+}
+
+.k-button-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .k-button--glow:not(:disabled) {

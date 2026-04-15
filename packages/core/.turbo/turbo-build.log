@@ -84,8 +84,8 @@ ESM Build start
 
 
 
-ESM dist/index.js 127.73 KB
-ESM ⚡️ Build success in 133ms
+ESM dist/index.js 128.50 KB
+ESM ⚡️ Build success in 239ms
 DTS Build start
-DTS ⚡️ Build success in 1609ms
-DTS dist/index.d.ts 11.94 KB
+DTS ⚡️ Build success in 2447ms
+DTS dist/index.d.ts 12.01 KB
