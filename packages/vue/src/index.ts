@@ -14,3 +14,4 @@ export * from './Carousel';
 export * from './Table';
 export * from './Button';
 export * from './Card';
+export * from './PageLayout';

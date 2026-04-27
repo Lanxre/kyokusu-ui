@@ -16,6 +16,7 @@ import ModalWindowDemo from '../components/demos/ModalWindowDemo.vue'
 import ButtonDemo from '../components/demos/ButtonDemo.vue'
 import TableDemo from '../components/demos/TableDemo.vue'
 import CardDemo from '../components/demos/CardDemo.vue'
+import PageLayoutDemo from '../components/demos/PageLayoutDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -33,5 +34,6 @@ export const componentDemos: Record<string, Component> = {
   ModalWindow: ModalWindowDemo,
   Button: ButtonDemo,
   Table: TableDemo,
-  Card: CardDemo
+  Card: CardDemo,
+  PageLayout: PageLayoutDemo
 }

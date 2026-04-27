@@ -14,3 +14,4 @@ export * from "./components/carousel";
 export * from "./components/button";
 export * from "./components/table";
 export * from "./components/card";
+export * from "./components/page-layout";

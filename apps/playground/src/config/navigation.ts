@@ -13,7 +13,8 @@ import {
   PhMagnifyingGlass,
   PhBrowser,
   PhTable,
-  PhCards
+  PhCards,
+  PhLayout
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -49,7 +50,8 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Label', label: 'Label', icon: PhSubtitles },
       { id: 'Separator', label: 'Separator', icon: PhLineSegment },
       { id: 'Carousel', label: 'Carousel', icon: PhLineSegment },
-      { id: 'ModalWindow', label: 'Modal Window', icon: PhBrowser }
+      { id: 'ModalWindow', label: 'Modal Window', icon: PhBrowser },
+      { id: 'PageLayout', label: 'PageLayout', icon: PhLayout }
     ]
   },
   {
