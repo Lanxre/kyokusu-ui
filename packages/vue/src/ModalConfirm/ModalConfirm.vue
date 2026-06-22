@@ -17,10 +17,10 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-	title: "Подтверждение",
-	description: "Вы уверены, что хотите выполнить это действие?",
-	confirmText: "Да",
-	cancelText: "Отмена"
+	title: "Confirmation",
+	description: "Are you sure you want to perform this action?",
+	confirmText: "Confirm",
+	cancelText: "Cancel"
 });
 
 const emit = defineEmits(["update:modelValue", "confirm", "cancel"]);
