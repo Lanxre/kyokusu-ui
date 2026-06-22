@@ -170,7 +170,7 @@ useModalLogic(toRef(props, "modelValue"), close);
     margin: 0;
 }
 
-:global(.dark) .k-modal-title {
+.dark .k-modal-title {
     --k-modal-title: #ffffff;
 }
 
@@ -192,7 +192,7 @@ useModalLogic(toRef(props, "modelValue"), close);
     color: var(--k-modal-close-hover, #71717a);
 }
 
-:global(.dark) .k-modal-close {
+.dark .k-modal-close {
     --k-modal-close-hover: #d4d4d8;
 }
 
@@ -218,7 +218,7 @@ useModalLogic(toRef(props, "modelValue"), close);
     gap: 12px;
 }
 
-:global(.dark) .k-modal-footer {
+.dark .k-modal-footer {
     --k-modal-footer-bg: rgba(39, 39, 42, 0.5);
 }
 
