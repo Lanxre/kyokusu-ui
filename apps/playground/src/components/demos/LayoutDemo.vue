@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Layout, Card, Button } from '@kyokusu-ui/vue'
+import { PageLayout, Card, Button } from '@kyokusu-ui/vue'
 </script>
 
 <template>
@@ -9,15 +9,15 @@ import { Layout, Card, Button } from '@kyokusu-ui/vue'
       <p class="demo-desc">
         A wrapper component that provides a consistent background and centered content area.
       </p>
-      
+
       <div class="layout-preview-container">
-        <Layout maxWidth="4xl" class="layout-preview">
+        <PageLayout maxWidth="56rem" class="layout-preview">
           <div class="flex-col-gap">
             <header class="flex-between">
               <h2>Dashboard</h2>
               <Button size="sm">New Project</Button>
             </header>
-            
+
             <div class="grid-cols-2">
               <Card>
                 <h4>Total Revenue</h4>
@@ -30,13 +30,13 @@ import { Layout, Card, Button } from '@kyokusu-ui/vue'
                 <p class="text-xs text-muted">+180.1% from last month</p>
               </Card>
             </div>
-            
+
             <Card class="flex-grow">
               <h4>Recent Activity</h4>
               <p class="text-muted">No recent activity found.</p>
             </Card>
           </div>
-        </Layout>
+        </PageLayout>
       </div>
     </div>
   </div>
