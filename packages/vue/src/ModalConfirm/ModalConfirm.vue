@@ -2,8 +2,6 @@
 import { ModalWindow } from '../ModalWindow';
 import { Button } from '../Button';
 
-import '../../../core/src/styles/modal-confirm.css';
-
 defineOptions({
 	inheritAttrs: false
 });
@@ -62,3 +60,112 @@ const onCancel = () => {
     </ModalWindow>
   </div>
 </template>
+
+<style scoped>
+.k-modal-confirm-body {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 8px 0;
+}
+
+.k-modal-confirm-description {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.6;
+	text-align: center;
+	color: var(--k-modal-confirm-desc, #52525b);
+}
+
+.dark .k-modal-confirm-description {
+	--k-modal-confirm-desc: #a1a1aa;
+}
+
+.k-modal-confirm-actions {
+	display: flex;
+	gap: 16px;
+}
+
+.k-modal-confirm-actions .k-modal-confirm-btn,
+.k-modal-confirm-actions .k-button {
+	flex: 1;
+	min-width: 0;
+}
+
+.k-modal-confirm-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 14px;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	outline: none;
+	height: 36px;
+	padding: 0 20px;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.k-modal-confirm-btn:focus-visible {
+	box-shadow: 0 0 0 3px var(--k-btn-ring, rgba(24, 24, 27, 0.2));
+}
+
+.k-modal-confirm-btn:active:not(:disabled) {
+	transform: scale(0.97);
+}
+
+.k-modal-confirm-btn--cancel {
+	background: transparent;
+	color: var(--k-modal-confirm-cancel-text, #18181b);
+	border-color: var(--k-modal-confirm-cancel-border, #e4e4e7);
+}
+
+.k-modal-confirm-btn--cancel:hover {
+	background: var(--k-modal-confirm-cancel-hover-bg, #f4f4f5);
+	border-color: var(--k-modal-confirm-cancel-hover-border, #d4d4d8);
+}
+
+.dark .k-modal-confirm-btn--cancel {
+	--k-modal-confirm-cancel-text: #f4f4f5;
+	--k-modal-confirm-cancel-border: #3f3f46;
+	--k-modal-confirm-cancel-hover-bg: #27272a;
+	--k-modal-confirm-cancel-hover-border: #52525b;
+}
+
+.k-modal-confirm-btn--confirm {
+	background: var(--k-modal-confirm-confirm-bg, #18181b);
+	color: var(--k-modal-confirm-confirm-text, #ffffff);
+	border-color: transparent;
+}
+
+.k-modal-confirm-btn--confirm:hover {
+	background: var(--k-modal-confirm-confirm-hover-bg, #3f3f46);
+}
+
+.dark .k-modal-confirm-btn--confirm {
+	--k-modal-confirm-confirm-bg: #ffffff;
+	--k-modal-confirm-confirm-text: #18181b;
+	--k-modal-confirm-confirm-hover-bg: #e4e4e7;
+}
+
+@media (max-width: 639px) {
+	.k-modal-confirm-actions {
+		flex-direction: column;
+	}
+
+	.k-modal-confirm-actions .k-modal-confirm-btn,
+	.k-modal-confirm-actions .k-button {
+		width: 100%;
+	}
+}
+
+</style>
