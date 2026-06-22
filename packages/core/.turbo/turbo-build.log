@@ -1,49 +1,50 @@
-$ tsup src/index.ts --format esm --clean && tsc --emitDeclarationOnly --declaration --outDir dist
-▲ [WARNING] The condition "style" here will never be used as it comes after both "import" and "require" [package.json]
+
+[0m[2m[35m$[0m [2m[1mtsup src/index.ts --format esm --clean && tsc --emitDeclarationOnly --declaration --outDir dist[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
 
     package.json:16:6:
-      16 │       "style": "./dist/index.css"
-         ╵       ~~~~~~~
+[37m      16 │       [32m"style"[37m: "./dist/index.css"
+         ╵       [32m~~~~~~~[0m
 
   The "import" condition comes earlier and will be used for all "import" statements:
 
     package.json:14:6:
-      14 │       "import": "./dist/index.css",
-         ╵       ~~~~~~~~
+[37m      14 │       [32m"import"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~[0m
 
   The "require" condition comes earlier and will be used for all "require" calls:
 
     package.json:15:6:
-      15 │       "require": "./dist/index.css",
-         ╵       ~~~~~~~~~
+[37m      15 │       [32m"require"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~~[0m
 
-▲ [WARNING] The condition "style" here will never be used as it comes after both "import" and "require" [package.json]
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
 
     package.json:21:6:
-      21 │       "style": "./dist/index.css"
-         ╵       ~~~~~~~
+[37m      21 │       [32m"style"[37m: "./dist/index.css"
+         ╵       [32m~~~~~~~[0m
 
   The "import" condition comes earlier and will be used for all "import" statements:
 
     package.json:19:6:
-      19 │       "import": "./dist/index.css",
-         ╵       ~~~~~~~~
+[37m      19 │       [32m"import"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~[0m
 
   The "require" condition comes earlier and will be used for all "require" calls:
 
     package.json:20:6:
-      20 │       "require": "./dist/index.css",
-         ╵       ~~~~~~~~~
+[37m      20 │       [32m"require"[37m: "./dist/index.css",
+         ╵       [32m~~~~~~~~~[0m
 
-CLI Building entry: src/index.ts
-CLI Using tsconfig: tsconfig.json
-CLI tsup v8.5.1
-CLI Using tsup config: /home/lanore/Projects/kyokusu-ui/packages/core/tsup.config.ts
-CLI Target: esnext
-CLI Cleaning output folder
-ESM Build start
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.1
+[34mCLI[39m Using tsup config: /home/lanore/Projects/kyokusu-ui/packages/core/tsup.config.ts
+[34mCLI[39m Target: esnext
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
 
- WARN  [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
+[43m[30m WARN [39m[49m [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]                                                                                                                              [90m2:11:51 PM[39m
 
     package.json:16:6:
 [37m      16 │       [32m"style"[37m: "./dist/index.css"
@@ -64,7 +65,7 @@ ESM Build start
 
 
 
- WARN  [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]
+[43m[30m WARN [39m[49m [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe condition "style" here will never be used as it comes after both "import" and "require"[0m [package.json]                                                                                                                              [90m2:11:51 PM[39m
 
     package.json:21:6:
 [37m      21 │       [32m"style"[37m: "./dist/index.css"
@@ -84,8 +85,8 @@ ESM Build start
 
 
 
-ESM dist/index.js 130.08 KB
-ESM ⚡️ Build success in 181ms
+[32mESM[39m [1mdist/index.js [22m[32m134.10 KB[39m
+[32mESM[39m ⚡️ Build success in 141ms
 DTS Build start
-DTS ⚡️ Build success in 1747ms
-DTS dist/index.d.ts 12.28 KB
+DTS ⚡️ Build success in 1618ms
+DTS dist/index.d.ts 12.90 KB
