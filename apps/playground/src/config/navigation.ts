@@ -15,7 +15,8 @@ import {
   PhQuestion,
   PhTable,
   PhCards,
-  PhLayout
+  PhLayout,
+  PhArrowFatUp
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -62,6 +63,7 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Toggle', label: 'Toggle', icon: PhToggleLeft },
       { id: 'Button', label: 'Button', icon: PhCursorClick },
       { id: 'Tooltip', label: 'Tooltip', icon: PhToolbox },
+      { id: 'TeleportedTooltip', label: 'Tele. Tooltip', icon: PhArrowFatUp },
       { id: 'Notification', label: 'Notification', icon: PhNotification }
     ]
   }

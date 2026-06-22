@@ -18,6 +18,7 @@ import TableDemo from '../components/demos/TableDemo.vue'
 import CardDemo from '../components/demos/CardDemo.vue'
 import PageLayoutDemo from '../components/demos/PageLayoutDemo.vue'
 import ModalConfirmDemo from '../components/demos/ModalConfirmDemo.vue'
+import TeleportedTooltipDemo from '../components/demos/TeleportedTooltipDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -28,6 +29,7 @@ export const componentDemos: Record<string, Component> = {
   DatePicker: DatePickerDemo,
   Separator: SeparatorDemo,
   Tooltip: TooltipDemo,
+  TeleportedTooltip: TeleportedTooltipDemo,
   Notification: NotificationDemo,
   SearchSelect: SearchSelectDemo,
   Label: LabelDemo,

@@ -16,3 +16,4 @@ export * from "./components/table";
 export * from "./components/card";
 export * from "./components/page-layout";
 export * from "./components/modal-confirm";
+export * from "./components/teleported-tooltip";

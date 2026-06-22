@@ -1,0 +1,69 @@
+.k-ttip-wrapper {
+	display: inline-block;
+	width: fit-content;
+}
+
+.k-ttip-content {
+	position: fixed;
+	z-index: 100;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.k-ttip-enter-active,
+.k-ttip-leave-active {
+	transition: opacity 0.15s ease;
+}
+
+.k-ttip-enter-from,
+.k-ttip-leave-to {
+	opacity: 0;
+}
+
+.k-ttip-box {
+	background-color: #27272a;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1;
+	padding: 6px 12px;
+	border-radius: 6px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+.dark .k-ttip-box {
+	background-color: #3f3f46;
+}
+
+.k-ttip-arrow {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background-color: inherit;
+	border-radius: 2px;
+}
+
+.k-ttip-arrow--top {
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.k-ttip-arrow--bottom {
+	top: -4px;
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.k-ttip-arrow--left {
+	right: -4px;
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.k-ttip-arrow--right {
+	left: -4px;
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+}
