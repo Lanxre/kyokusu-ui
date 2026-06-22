@@ -12,6 +12,7 @@ import {
   PhSubtitles,
   PhMagnifyingGlass,
   PhBrowser,
+  PhQuestion,
   PhTable,
   PhCards,
   PhLayout
@@ -51,6 +52,7 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Separator', label: 'Separator', icon: PhLineSegment },
       { id: 'Carousel', label: 'Carousel', icon: PhLineSegment },
       { id: 'ModalWindow', label: 'Modal Window', icon: PhBrowser },
+      { id: 'ModalConfirm', label: 'Modal Confirm', icon: PhQuestion },
       { id: 'PageLayout', label: 'PageLayout', icon: PhLayout }
     ]
   },
