@@ -16,7 +16,11 @@ import {
   PhTable,
   PhCards,
   PhLayout,
-  PhArrowFatUp
+  PhArrowFatUp,
+  PhListPlus,
+  PhMedal,
+  PhCircleNotch,
+  PhChatCircleText
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -54,7 +58,9 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Carousel', label: 'Carousel', icon: PhLineSegment },
       { id: 'ModalWindow', label: 'Modal Window', icon: PhBrowser },
       { id: 'ModalConfirm', label: 'Modal Confirm', icon: PhQuestion },
-      { id: 'PageLayout', label: 'PageLayout', icon: PhLayout }
+      { id: 'PageLayout', label: 'PageLayout', icon: PhLayout },
+      { id: 'Accordion', label: 'Accordion', icon: PhListPlus },
+      { id: 'Badge', label: 'Badge', icon: PhMedal }
     ]
   },
   {
@@ -64,7 +70,9 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'Button', label: 'Button', icon: PhCursorClick },
       { id: 'Tooltip', label: 'Tooltip', icon: PhToolbox },
       { id: 'TeleportedTooltip', label: 'Tele. Tooltip', icon: PhArrowFatUp },
-      { id: 'Notification', label: 'Notification', icon: PhNotification }
+      { id: 'Notification', label: 'Notification', icon: PhNotification },
+      { id: 'Spinner', label: 'Spinner', icon: PhCircleNotch },
+      { id: 'Popover', label: 'Popover', icon: PhChatCircleText }
     ]
   }
 ]

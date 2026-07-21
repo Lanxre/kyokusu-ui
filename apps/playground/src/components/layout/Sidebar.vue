@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { PhMoon, PhSun } from '@phosphor-icons/vue'
 import { useAppStore } from '../../stores/app'
@@ -7,6 +8,16 @@ import { navigationGroups } from '../../config/navigation'
 const appStore = useAppStore()
 const { currentComponent, isDark } = storeToRefs(appStore)
 const { toggleTheme, setCurrentComponent } = appStore
+
+const menuRef = ref<HTMLElement | null>(null)
+
+const onWheel = (event: WheelEvent) => {
+  if (!menuRef.value) return;
+
+  menuRef.value.scrollTop += event.deltaY;
+};
+
+
 </script>
 
 <template>
@@ -22,12 +33,16 @@ const { toggleTheme, setCurrentComponent } = appStore
       </div>
     </div>
 
-    <nav class="menu">
-      <div v-for="group in navigationGroups" :key="group.label" class="menu-group">
+    <nav class="menu" ref="menuRef" @wheel="onWheel">
+      <div
+        v-for="group in navigationGroups"
+        :key="group.label"
+        class="menu-group"
+      >
         <div class="menu-group-label">
           {{ group.label }}
         </div>
-
+    
         <button
           v-for="item in group.items"
           :key="item.id"
@@ -48,7 +63,7 @@ const { toggleTheme, setCurrentComponent } = appStore
 .sidebar {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
 
 .sidebar-header {
@@ -76,8 +91,13 @@ const { toggleTheme, setCurrentComponent } = appStore
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
   padding-right: 4px;
+  flex: 1;
+  min-height: 0;
 }
 
 .menu-group {

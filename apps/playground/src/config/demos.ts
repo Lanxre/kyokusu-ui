@@ -19,6 +19,10 @@ import CardDemo from '../components/demos/CardDemo.vue'
 import PageLayoutDemo from '../components/demos/PageLayoutDemo.vue'
 import ModalConfirmDemo from '../components/demos/ModalConfirmDemo.vue'
 import TeleportedTooltipDemo from '../components/demos/TeleportedTooltipDemo.vue'
+import AccordionDemo from '../components/demos/AccordionDemo.vue'
+import BadgeDemo from '../components/demos/BadgeDemo.vue'
+import SpinnerDemo from '../components/demos/SpinnerDemo.vue'
+import PopoverDemo from '../components/demos/PopoverDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -39,5 +43,9 @@ export const componentDemos: Record<string, Component> = {
   Button: ButtonDemo,
   Table: TableDemo,
   Card: CardDemo,
-  PageLayout: PageLayoutDemo
+  PageLayout: PageLayoutDemo,
+  Accordion: AccordionDemo,
+  Badge: BadgeDemo,
+  Spinner: SpinnerDemo,
+  Popover: PopoverDemo
 }
