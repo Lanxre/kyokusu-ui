@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { PhArrowRight } from '@phosphor-icons/vue'
 import { Button } from '@kyokusu-ui/vue';
+import { PROJECT_VERSION } from '../const';
 </script>
 
 <template>
@@ -20,7 +21,7 @@ import { Button } from '@kyokusu-ui/vue';
         
         <div class="badge animate-fade-in-up" style="animation-delay: 0ms;">
           <span class="badge-dot"></span>
-          Kyokusu UI 0.0.5 is now
+          Kyokusu UI {{ PROJECT_VERSION }} is now
         </div>
         
         <div class="hero-actions animate-fade-in-up" style="animation-delay: 300ms;">
