@@ -5,7 +5,8 @@ const propsDescription = [
   { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", desc: 'Направление разделителя.' },
   { name: 'label', type: 'string', default: 'undefined', desc: 'Текст, который выводится поверх линии (только для horizontal).' },
   { name: 'labelPosition', type: "'left' | 'center' | 'right'", default: "'center'", desc: 'Позиция текста на линии.' },
-  { name: 'dashed', type: 'boolean', default: 'false', desc: 'Пунктирная линия вместо сплошной.' }
+  { name: 'dashed', type: 'boolean', default: 'false', desc: 'Пунктирная линия вместо сплошной.' },
+  { name: 'color', type: 'string', default: 'undefined', desc: 'Цвет линии (CSS color).' }
 ]
 </script>
 
@@ -48,6 +49,20 @@ const propsDescription = [
         <Separator orientation="vertical" dashed />
         <button class="toolbar-btn">Save</button>
       </div>
+    </div>
+
+    <div class="card">
+      <h3>Custom Color</h3>
+      <Separator color="#ec4899" />
+      <p class="demo-text">Pink separator line.</p>
+      <Separator color="#3b82f6" label="BLUE" />
+      <p class="demo-text">Blue separator with label.</p>
+      <Separator color="#10b981" dashed />
+      <p class="demo-text">Green dashed separator.</p>
+      <Separator orientation="vertical" color="#f59e0b" />
+      <Separator orientation="vertical" color="#8b5cf6" />
+      <Separator orientation="vertical" color="#ef4444" />
+      <p class="demo-text">Colored vertical separators.</p>
     </div>
 
     <div class="card props-table-card">

@@ -11,7 +11,7 @@ interface User {
     lastActive: string;
 }
 
-const headers: TableHeader<keyof User>[] = [
+const headers: TableHeader[] = [
     { key: 'id', label: 'ID', sortable: true },
     { key: 'name', label: 'Name', sortable: true },
     { key: 'role', label: 'Role', sortable: true },
@@ -27,11 +27,11 @@ const users = ref<User[]>([
     { id: 5, name: 'Evan Wright', role: 'Editor', status: 'Active', lastActive: '2023-10-08' }
 ])
 
-const handleEdit = (item: User) => {
+const handleEdit = (item: Record<string, any>) => {
     alert(`Editing ${item.name}`)
 }
 
-const handleDelete = (item: User) => {
+const handleDelete = (item: Record<string, any>) => {
     if (confirm(`Are you sure you want to delete ${item.name}?`)) {
         users.value = users.value.filter(u => u.id !== item.id)
     }
@@ -39,7 +39,7 @@ const handleDelete = (item: User) => {
 
 const propsDescription = [
   { name: 'headers', type: 'TableHeader[]', default: '[]', desc: 'Массив конфигураций колонок таблицы.' },
-  { name: 'items', type: 'T[]', default: '[]', desc: 'Массив данных для отображения.' },
+  { name: 'items', type: 'Record<string, any>[]', default: '[]', desc: 'Массив данных для отображения.' },
   { name: 'searchable', type: 'boolean', default: 'true', desc: 'Включить или отключить встроенный поиск.' },
   { name: 'searchPlaceholder', type: 'string', default: "'Search...'", desc: 'Текст плейсхолдера для инпута поиска.' },
   { name: 'showActions', type: 'boolean', default: 'true', desc: 'Отображать колонку с действиями (Редактировать / Удалить).' },
@@ -48,8 +48,8 @@ const propsDescription = [
 ]
 
 const eventsDescription = [
-  { name: '@edit', payload: 'item: T', desc: 'Срабатывает при клике на иконку редактирования.' },
-  { name: '@delete', payload: 'item: T', desc: 'Срабатывает при клике на иконку удаления.' }
+  { name: '@edit', payload: 'item: Record<string, any>', desc: 'Срабатывает при клике на иконку редактирования.' },
+  { name: '@delete', payload: 'item: Record<string, any>', desc: 'Срабатывает при клике на иконку удаления.' }
 ]
 </script>
 
