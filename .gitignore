@@ -45,3 +45,14 @@ bun.lockb
 Thumbs.db
 .vscode/
 .idea/
+
+# Git worktrees (created by /ulw command)
+worktrees/!.gitkeep
+worktrees/*
+.playwright-mcp
+evidence
+drafts
+boulder.json
+.sisyphus/run-continuation
+.omo/run-continuation
+daemon.pid
