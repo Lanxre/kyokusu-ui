@@ -5,6 +5,7 @@ export interface SeparatorOptions {
     label?: string;
     labelPosition?: 'left' | 'center' | 'right';
     dashed?: boolean;
+    color?: string;
 }
 
 export class Separator {
@@ -51,6 +52,10 @@ export class Separator {
 
         if (this.options.dashed) {
             this.wrapperEl.classList.add('k-separator--dashed');
+        }
+
+        if (this.options.color) {
+            this.wrapperEl.style.setProperty('--k-sep-color', this.options.color);
         }
 
         this.container.appendChild(this.wrapperEl);
