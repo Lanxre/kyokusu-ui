@@ -1,0 +1,122 @@
+.k-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    
+    --k-badge-bg: #f4f4f5;
+    --k-badge-text: #18181b;
+    --k-badge-border: transparent;
+    
+    background-color: var(--k-badge-bg);
+    color: var(--k-badge-text);
+    border-color: var(--k-badge-border);
+}
+
+.dark .k-badge {
+    --k-badge-bg: #27272a;
+    --k-badge-text: #f4f4f5;
+    --k-badge-border: transparent;
+}
+
+/* Link variant */
+.k-badge--link {
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.k-badge--link:hover {
+    opacity: 0.8;
+}
+
+/* Sizes */
+.k-badge--sm {
+    height: 20px;
+    padding: 0 8px;
+    font-size: 11px;
+}
+
+.k-badge--md {
+    height: 24px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.k-badge--lg {
+    height: 28px;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+/* Icon sizing */
+.k-badge-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.k-badge--sm .k-badge-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.k-badge--md .k-badge-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.k-badge--lg .k-badge-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.k-badge-icon--start {
+    margin-right: 4px;
+}
+
+.k-badge-icon--end {
+    margin-left: 4px;
+}
+
+/* Variants */
+.k-badge--secondary {
+    --k-badge-bg: #e4e4e7;
+    --k-badge-text: #18181b;
+}
+.dark .k-badge--secondary {
+    --k-badge-bg: #3f3f46;
+    --k-badge-text: #f4f4f5;
+}
+
+.k-badge--destructive {
+    --k-badge-bg: #ef4444;
+    --k-badge-text: #ffffff;
+}
+.dark .k-badge--destructive {
+    --k-badge-bg: #ef4444;
+    --k-badge-text: #ffffff;
+}
+
+.k-badge--outline {
+    --k-badge-bg: transparent;
+    --k-badge-text: #18181b;
+    --k-badge-border: #e4e4e7;
+}
+.dark .k-badge--outline {
+    --k-badge-bg: transparent;
+    --k-badge-text: #f4f4f5;
+    --k-badge-border: #3f3f46;
+}
+
+.k-badge--ghost {
+    --k-badge-bg: transparent;
+    --k-badge-text: #18181b;
+}
+.dark .k-badge--ghost {
+    --k-badge-bg: transparent;
+    --k-badge-text: #f4f4f5;
+}
