@@ -1,5 +1,5 @@
-<script setup lang="ts" generic="T extends Record<string, any>">
-import { ref, computed, useId, useAttrs } from "vue";
+<script setup lang="ts">
+import { ref, computed, useId, useAttrs, type PropType } from "vue";
 import { 
     PhMagnifyingGlass, 
     PhPencilSimple, 
@@ -9,24 +9,22 @@ import {
     PhCaretUpDown
 } from "@phosphor-icons/vue";
 
-export interface TableHeader<K = Extract<keyof T, string>> {
-    key: K;
+export interface TableHeader {
+    key: string;
     label: string;
     sortable?: boolean;
     align?: 'left' | 'center' | 'right';
 }
 
-interface Props {
-    headers: TableHeader<any>[];
-    items: T[];
+const props = withDefaults(defineProps<{
+    headers: TableHeader[];
+    items: Record<string, any>[];
     searchable?: boolean;
     searchPlaceholder?: string;
     showActions?: boolean;
     emptyText?: string;
     loading?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
     searchable: true,
     searchPlaceholder: 'Search...',
     showActions: true,
@@ -35,8 +33,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-    (e: 'edit', item: T): void;
-    (e: 'delete', item: T): void;
+    (e: 'edit', item: Record<string, any>): void;
+    (e: 'delete', item: Record<string, any>): void;
 }>();
 
 const attrs = useAttrs();
@@ -72,8 +70,8 @@ const filteredAndSortedItems = computed(() => {
     // Sort
     if (sortKey.value) {
         result.sort((a, b) => {
-            const valA = a[sortKey.value as keyof T];
-            const valB = b[sortKey.value as keyof T];
+            const valA = a[sortKey.value as keyof Record<string, any>];
+            const valB = b[sortKey.value as keyof Record<string, any>];
             
             if (valA === valB) return 0;
             if (valA === null || valA === undefined) return sortAsc.value ? 1 : -1;
@@ -152,8 +150,8 @@ const filteredAndSortedItems = computed(() => {
                             :key="String(header.key)"
                             :class="`k-table-align-${header.align || 'left'}`"
                         >
-                            <slot :name="`cell-${String(header.key)}`" :item="item" :value="item[header.key as keyof T]">
-                                {{ item[header.key as keyof T] }}
+                            <slot :name="`cell-${String(header.key)}`" :item="item" :value="item[header.key]">
+                                {{ item[header.key] }}
                             </slot>
                         </td>
                         <td v-if="showActions" class="k-table-align-right k-table-actions-cell">
