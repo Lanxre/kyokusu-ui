@@ -5,6 +5,7 @@ import { useAppStore } from './stores/app'
 import { useTheme } from './composables/useTheme'
 import Sidebar from './components/layout/Sidebar.vue'
 import { componentDemos } from './config/demos'
+import { onMounted, onUnmounted } from 'vue'
 
 const { initTheme } = useTheme()
 initTheme()
@@ -13,6 +14,16 @@ const appStore = useAppStore()
 const { currentComponent } = storeToRefs(appStore)
 
 const { notifications, remove } = useNotificationProvider()
+
+function handleSwitchThemeKey(event: KeyboardEvent) {
+  if (event.key === 'd') {
+      event.preventDefault()
+      appStore.toggleTheme();
+    }
+}
+
+onMounted(() => window.addEventListener('keydown', handleSwitchThemeKey))
+onUnmounted(() => window.removeEventListener('keydown', handleSwitchThemeKey))
 </script>
 
 <template>
