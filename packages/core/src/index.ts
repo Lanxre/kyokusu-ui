@@ -17,3 +17,7 @@ export * from "./components/card";
 export * from "./components/page-layout";
 export * from "./components/modal-confirm";
 export * from "./components/teleported-tooltip";
+export * from "./components/accordion";
+export * from "./components/badge";
+export * from "./components/spinner";
+export * from "./components/popover";
