@@ -1,15 +1,23 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
+
 interface Props {
     orientation?: 'horizontal' | 'vertical';
     label?: string;
     labelPosition?: 'left' | 'center' | 'right';
     dashed?: boolean;
+    color?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     orientation: 'horizontal',
     labelPosition: 'center',
     dashed: false
+});
+
+const separatorStyle = computed(() => {
+    if (!props.color) return {};
+    return { '--k-sep-color': props.color } as Record<string, string>;
 });
 </script>
 
@@ -24,6 +32,7 @@ withDefaults(defineProps<Props>(), {
                 'k-separator--dashed': dashed
             }
         ]"
+        :style="separatorStyle"
         role="separator"
         :aria-orientation="orientation"
     >
