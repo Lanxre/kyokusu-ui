@@ -1,15 +1,17 @@
 <script setup lang="ts">
 interface Props {
     maxWidth?: string;
+    bg?: string;
 }
 
 withDefaults(defineProps<Props>(), {
-    maxWidth: '72rem'
+    maxWidth: '72rem',
+    bg: 'transparent'
 });
 </script>
 
 <template>
-    <div class="k-page-layout">
+    <div class="k-page-layout" :style="{ backgroundColor: bg }">
         <div class="k-page-layout-inner" :style="{ maxWidth }">
             <slot />
         </div>
@@ -21,7 +23,6 @@ withDefaults(defineProps<Props>(), {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #fafafa;
     transition: background-color 0.3s ease;
 }
 
