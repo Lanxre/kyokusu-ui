@@ -177,3 +177,57 @@ body, html {
     font-size: 13px;
     color: var(--text-muted);
 }
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sm {
+    font-size:   12px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.lower {
+    text-transform: lowercase;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.gap-6 {
+    gap: 6px;
+}
+
+.mt-6 {
+    margin-top: 6px;
+}
