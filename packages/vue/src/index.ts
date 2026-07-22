@@ -21,3 +21,4 @@ export * from './TeleportedTooltip';
 export * from './Badge';
 export * from './Spinner';
 export * from './Popover';
+export * from './ImagePicker';
