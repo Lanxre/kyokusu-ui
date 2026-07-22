@@ -22,3 +22,4 @@ export * from './Badge';
 export * from './Spinner';
 export * from './Popover';
 export * from './ImagePicker';
+export * from './CircleBlock';

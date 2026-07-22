@@ -92,6 +92,10 @@ onUnmounted(() => {
             </div>
 
             <div class="component-search" ref="searchWrapperRef">
+                <div class="flex flex-row justify-center gap-6">
+                    <span class="sm">Copmponents count:</span>
+                    <span class="sm underline"> {{ allItems.length }} </span>
+                </div>
                 <div class="search-input-wrapper" @keydown.ctrl.k.prevent="searchFocus">
                     <PhMagnifyingGlass :size="16" class="search-icon" />
                     <input
@@ -103,10 +107,6 @@ onUnmounted(() => {
                         @focus="onSearchFocus"
                         @input="onSearchInput"
                     />
-                </div>
-                <div class="flex flex-row justify-center gap-6 mt-6">
-                    <span class="sm">Copmponents count:</span>
-                    <span class="sm underline"> {{ allItems.length }} </span>
                 </div>
                 <div v-if="showResults && filteredItems.length > 0" class="search-results">
                     <button
@@ -159,7 +159,6 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
     gap: 12px;
     padding-bottom: 12px;
 }

@@ -22,3 +22,4 @@ export * from "./components/badge";
 export * from "./components/spinner";
 export * from "./components/popover";
 export * from "./components/image-picker";
+export * from "./components/circle-block";

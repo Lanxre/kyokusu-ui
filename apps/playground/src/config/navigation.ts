@@ -21,7 +21,8 @@ import {
   PhMedal,
   PhCircleNotch,
   PhChatCircleText,
-  PhImage
+  PhImage,
+  PhCircle
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -62,7 +63,8 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'ModalConfirm', label: 'Modal Confirm', icon: PhQuestion },
       { id: 'PageLayout', label: 'PageLayout', icon: PhLayout },
       { id: 'Accordion', label: 'Accordion', icon: PhListPlus },
-      { id: 'Badge', label: 'Badge', icon: PhMedal }
+      { id: 'Badge', label: 'Badge', icon: PhMedal },
+      { id: 'CircleBlock', label: 'CircleBlock', icon: PhCircle }
     ]
   },
   {

@@ -1,0 +1,33 @@
+.k-circle-block {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.k-circle-block-text {
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+.k-circle-block-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.k-circle-block-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.k-circle-block-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}

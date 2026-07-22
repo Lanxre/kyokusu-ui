@@ -24,6 +24,7 @@ import BadgeDemo from '../components/demos/BadgeDemo.vue'
 import SpinnerDemo from '../components/demos/SpinnerDemo.vue'
 import PopoverDemo from '../components/demos/PopoverDemo.vue'
 import ImagePickerDemo from '../components/demos/ImagePickerDemo.vue'
+import CircleBlockDemo from '../components/demos/CircleBlockDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -49,5 +50,6 @@ export const componentDemos: Record<string, Component> = {
   Badge: BadgeDemo,
   Spinner: SpinnerDemo,
   Popover: PopoverDemo,
-  ImagePicker: ImagePickerDemo
+  ImagePicker: ImagePickerDemo,
+  CircleBlock: CircleBlockDemo
 }
