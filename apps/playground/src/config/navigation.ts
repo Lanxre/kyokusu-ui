@@ -20,7 +20,8 @@ import {
   PhListPlus,
   PhMedal,
   PhCircleNotch,
-  PhChatCircleText
+  PhChatCircleText,
+  PhImage
 } from '@phosphor-icons/vue'
 import type { Component } from 'vue'
 
@@ -45,7 +46,8 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'MultiSelect', label: 'MultiSelect', icon: PhSelectionAll },
       { id: 'SearchSelect', label: 'SearchSelect', icon: PhMagnifyingGlass },
       { id: 'DatePicker', label: 'DatePicker', icon: PhTimer },
-      { id: 'Table', label: 'Table', icon: PhTable }
+      { id: 'Table', label: 'Table', icon: PhTable },
+      { id: 'ImagePicker', label: 'ImagePicker', icon: PhImage }
     ]
   },
   {

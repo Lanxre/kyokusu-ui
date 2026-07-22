@@ -23,6 +23,7 @@ import AccordionDemo from '../components/demos/AccordionDemo.vue'
 import BadgeDemo from '../components/demos/BadgeDemo.vue'
 import SpinnerDemo from '../components/demos/SpinnerDemo.vue'
 import PopoverDemo from '../components/demos/PopoverDemo.vue'
+import ImagePickerDemo from '../components/demos/ImagePickerDemo.vue'
 
 export const componentDemos: Record<string, Component> = {
   Toggle: ToggleDemo,
@@ -47,5 +48,6 @@ export const componentDemos: Record<string, Component> = {
   Accordion: AccordionDemo,
   Badge: BadgeDemo,
   Spinner: SpinnerDemo,
-  Popover: PopoverDemo
+  Popover: PopoverDemo,
+  ImagePicker: ImagePickerDemo
 }
