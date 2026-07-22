@@ -16,7 +16,7 @@ const { currentComponent } = storeToRefs(appStore)
 const { notifications, remove } = useNotificationProvider()
 
 function handleSwitchThemeKey(event: KeyboardEvent) {
-  if (event.key === 'd') {
+  if (((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'd')) {
       event.preventDefault()
       appStore.toggleTheme();
     }
