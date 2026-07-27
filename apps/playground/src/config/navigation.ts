@@ -18,6 +18,7 @@ import {
   PhLayout,
   PhArrowFatUp,
   PhListPlus,
+  PhList,
   PhMedal,
   PhCircleNotch,
   PhChatCircleText,
@@ -64,7 +65,8 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'PageLayout', label: 'PageLayout', icon: PhLayout },
       { id: 'Accordion', label: 'Accordion', icon: PhListPlus },
       { id: 'Badge', label: 'Badge', icon: PhMedal },
-      { id: 'CircleBlock', label: 'CircleBlock', icon: PhCircle }
+      { id: 'CircleBlock', label: 'CircleBlock', icon: PhCircle },
+      { id: 'DropdownMenu', label: 'DropdownMenu', icon: PhList }
     ]
   },
   {
