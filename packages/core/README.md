@@ -1,70 +1,321 @@
-# Kyokusu UI
+# @kyokusu-ui/core
 
-A premium, minimalist, and highly customizable UI component library for Vue 3 and Vanilla JS. Designed with quiet luxury in mind and engineered for high-performance modern web applications.
+Vanilla JS components and styles for Kyokusu UI. Framework-agnostic, class-based API.
 
-![Screen](/assets/1.png)
-
-## Features
-
-- **Modern Aesthetic:** Clean, minimalist design with a focus on typography and spacing.
-- **Vue 3 & Core:** Optimized components for Vue 3 and a vanilla JS core for other environments.
-- **TypeScript First:** Fully typed for a superior developer experience.
-- **Customizable:** Easily adaptable styles via CSS variables.
-- **Accessible:** Built with accessibility in mind.
-- **Icon Support:** Integrated with Phosphor Icons.
-
-## Packages
-
-- `@kyokusu-ui/vue`: Vue 3 components.
-- `@kyokusu-ui/core`: Vanilla JS core components and styles.
-
-## Quick Start
-
-### Vue 3
-
-```bash
-npm install @kyokusu-ui/vue
-```
-
-```vue
-<script setup>
-import { Button } from '@kyokusu-ui/vue'
-</script>
-
-<template>
-  <Button variant="primary">Start Building</Button>
-</template>
-```
-
-### Vanilla JS
+## Install
 
 ```bash
 npm install @kyokusu-ui/core
 ```
 
-```javascript
-import { DatePicker } from '@kyokusu-ui/core'
+```js
 import '@kyokusu-ui/core/dist/index.css'
+```
 
-const dp = new DatePicker('#datepicker-root', {
-  label: 'Select Date',
+## Usage
+
+### Button
+
+```js
+import { Button } from '@kyokusu-ui/core'
+
+const btn = new Button('#root', {
+  variant: 'primary',
+  size: 'md',
+  text: 'Click me',
+  onClick: () => console.log('clicked')
+})
+```
+
+### Input
+
+```js
+import { Input } from '@kyokusu-ui/core'
+
+new Input('#root', {
+  label: 'Email',
+  type: 'email',
+  placeholder: 'user@example.com',
   onChange: (val) => console.log(val)
 })
 ```
 
-## Development
+### Select
 
-This project uses [Turborepo](https://turbo.build/) and [Bun](https://bun.sh/).
+```js
+import { Select } from '@kyokusu-ui/core'
 
-```bash
-# Install dependencies
-bun install
+new Select('#root', {
+  label: 'Country',
+  placeholder: 'Pick one',
+  options: [
+    { value: 'us', label: 'United States' },
+    { value: 'jp', label: 'Japan' }
+  ],
+  onChange: (val) => console.log(val)
+})
+```
 
-# Start development servers
-bun run dev
+### SearchSelect
 
-# Build all packages
-bun run build
+```js
+import { SearchSelect } from '@kyokusu-ui/core'
+
+new SearchSelect('#root', {
+  label: 'Search',
+  options: [
+    { value: '1', label: 'React' },
+    { value: '2', label: 'Vue' },
+    { value: '3', label: 'Svelte' }
+  ],
+  onChange: (val) => console.log(val)
+})
+```
+
+### MultiSelect
+
+```js
+import { MultiSelect } from '@kyokusu-ui/core'
+
+new MultiSelect('#root', {
+  label: 'Frameworks',
+  options: [
+    { value: 'react', label: 'React' },
+    { value: 'vue', label: 'Vue' },
+    { value: 'svelte', label: 'Svelte' }
+  ],
+  onChange: (vals) => console.log(vals)
+})
+```
+
+### Toggle
+
+```js
+import { Toggle } from '@kyokusu-ui/core'
+
+new Toggle('#root', {
+  label: 'Dark mode',
+  onChange: (checked) => console.log(checked)
+})
+```
+
+### DatePicker
+
+```js
+import { DatePicker } from '@kyokusu-ui/core'
+
+new DatePicker('#root', {
+  label: 'Birthday',
+  type: 'date',
+  onChange: (val) => console.log(val)
+})
+```
+
+### Accordion
+
+```js
+import { Accordion } from '@kyokusu-ui/core'
+
+new Accordion('#root', {
+  multiple: true,
+  items: [
+    { title: 'Section 1', content: 'Content here' },
+    { title: 'Section 2', content: 'More content' }
+  ]
+})
+```
+
+### Table
+
+```js
+import { Table } from '@kyokusu-ui/core'
+
+new Table('#root', {
+  headers: [
+    { key: 'name', label: 'Name', sortable: true },
+    { key: 'role', label: 'Role' }
+  ],
+  items: [
+    { name: 'Alice', role: 'Engineer' },
+    { name: 'Bob', role: 'Designer' }
+  ],
+  searchable: true
+})
+```
+
+### Card
+
+```js
+import { Card } from '@kyokusu-ui/core'
+
+new Card('#root', {
+  variant: 'default',
+  padding: 'md',
+  shadow: true
+})
+```
+
+### Badge
+
+```js
+import { Badge } from '@kyokusu-ui/core'
+
+new Badge('#root', {
+  text: 'New',
+  variant: 'destructive',
+  size: 'sm'
+})
+```
+
+### Spinner
+
+```js
+import { Spinner } from '@kyokusu-ui/core'
+
+new Spinner('#root', {
+  size: 'md',
+  variant: 'primary'
+})
+```
+
+### Tooltip
+
+```js
+import { Tooltip } from '@kyokusu-ui/core'
+
+new Tooltip('#root', {
+  content: 'Helpful tip',
+  placement: 'top'
+})
+```
+
+### Popover
+
+```js
+import { Popover } from '@kyokusu-ui/core'
+
+new Popover('#root', {
+  title: 'Info',
+  content: 'Details here',
+  trigger: 'click',
+  placement: 'bottom'
+})
+```
+
+### DropdownMenu
+
+```js
+import { DropdownMenu } from '@kyokusu-ui/core'
+
+new DropdownMenu('#root', {
+  items: [
+    { id: 'copy', label: 'Copy' },
+    { id: 'sep', label: '', separator: true },
+    { id: 'more', label: 'More', submenu: [
+      { id: 'archive', label: 'Archive' }
+    ]}
+  ],
+  trigger: 'click',
+  onSelect: (item) => console.log(item.id)
+})
+```
+
+### ModalWindow
+
+```js
+import { ModalWindow } from '@kyokusu-ui/core'
+
+const modal = new ModalWindow({
+  title: 'Confirm',
+  content: 'Are you sure?',
+  onClose: () => console.log('closed')
+})
+modal.open()
+```
+
+### Notification
+
+```js
+import { NotificationManager } from '@kyokusu-ui/core'
+
+const notify = new NotificationManager()
+notify.show({ title: 'Done', type: 'success' })
+```
+
+### Separator
+
+```js
+import { Separator } from '@kyokusu-ui/core'
+new Separator('#root')
+```
+
+### Label
+
+```js
+import { Label } from '@kyokusu-ui/core'
+new Label('#root', { text: 'Username', required: true })
+```
+
+### RichText
+
+```js
+import { RichText } from '@kyokusu-ui/core'
+new RichText('#root', { placeholder: 'Write something...' })
+```
+
+### Carousel
+
+```js
+import { Carousel } from '@kyokusu-ui/core'
+
+new Carousel('#root', {
+  items: [
+    { type: 'image', src: '/img1.jpg' },
+    { type: 'image', src: '/img2.jpg' }
+  ],
+  autoPlay: true
+})
+```
+
+### ImagePicker
+
+```js
+import { ImagePicker } from '@kyokusu-ui/core'
+new ImagePicker('#root', { onChange: (file) => console.log(file) })
+```
+
+### CircleBlock
+
+```js
+import { CircleBlock } from '@kyokusu-ui/core'
+new CircleBlock('#root', { label: 'A', variant: 'primary' })
+```
+
+### PageLayout
+
+```js
+import { PageLayout } from '@kyokusu-ui/core'
+new PageLayout('#root', { title: 'Dashboard' })
+```
+
+### TeleportedTooltip
+
+```js
+import { TeleportedTooltip } from '@kyokusu-ui/core'
+new TeleportedTooltip('#root', { content: 'Teleported tip' })
+```
+
+### ModalConfirm
+
+```js
+import { ModalConfirm } from '@kyokusu-ui/core'
+
+const confirm = new ModalConfirm({
+  title: 'Delete?',
+  content: 'This cannot be undone.',
+  onConfirm: () => console.log('confirmed')
+})
+confirm.open()
 ```
 
 ## License
