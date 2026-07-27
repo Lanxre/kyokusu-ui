@@ -23,3 +23,4 @@ export * from './Spinner';
 export * from './Popover';
 export * from './ImagePicker';
 export * from './CircleBlock';
+export * from './DropdownMenu';
