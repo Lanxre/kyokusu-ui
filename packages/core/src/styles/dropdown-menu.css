@@ -1,0 +1,120 @@
+/* DropdownMenu — global styles for @kyokusu-ui/core */
+
+.k-dropdown-menu {
+    z-index: 9999;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    padding: 4px;
+    list-style: none;
+    margin: 0;
+    border: 1px solid #161616;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.k-dropdown-menu--hidden {
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+}
+
+.dark .k-dropdown-menu {
+    background-color: #27272a;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    border-color: rgba(211, 211, 211, 0.4);
+}
+
+.k-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #18181b;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.dark .k-dropdown-item {
+    color: #f4f4f5;
+}
+
+.k-dropdown-item:hover:not(.k-dropdown-item--disabled) {
+    background-color: #cbcbce;
+}
+
+.dark .k-dropdown-item:hover:not(.k-dropdown-item--disabled) {
+    background-color: #3f3f46;
+}
+
+.k-dropdown-item--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.k-dropdown-separator {
+    height: 1px;
+    background-color: #e4e4e7;
+    margin: 4px 0;
+}
+
+.dark .k-dropdown-separator {
+    background-color: #3f3f46;
+}
+
+.k-dropdown-item-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: #71717a;
+}
+
+.dark .k-dropdown-item-icon {
+    color: #a1a1aa;
+}
+
+.k-dropdown-item-label {
+    flex: 1;
+}
+
+.k-dropdown-item-arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: #a1a1aa;
+    margin-left: auto;
+}
+
+.dark .k-dropdown-item-arrow {
+    color: #71717a;
+}
+
+/* Submenu */
+.k-dropdown-submenu {
+    z-index: 10001;
+    position: absolute;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.k-dropdown-submenu--hidden {
+    opacity: 0;
+    transform: translateX(-4px);
+    pointer-events: none;
+}
+
+.k-dropdown-item--has-submenu {
+    position: relative;
+}
+
+.k-dropdown-item--has-submenu::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}

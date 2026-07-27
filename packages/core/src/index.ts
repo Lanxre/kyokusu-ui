@@ -23,3 +23,4 @@ export * from "./components/spinner";
 export * from "./components/popover";
 export * from "./components/image-picker";
 export * from "./components/circle-block";
+export * from "./components/dropdown-menu";
